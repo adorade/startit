@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  block settings
+
+  head
+    if title
+      title #{title}
+    if description
+      meta(content=description name="description")
+    if entry.css.inline
+      link(rel="stylesheet" href=`${inlinePath}` inline)
+    if entry.css.external
+      link(rel="stylesheet" href="css/style.css")
+    //- link(
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/zenburn.min.css"
+      integrity="sha256-l1EdIP3q4FnAcLeY5yyxDdRtd5e13V7VXLXjuYj2gRA="
+      crossorigin="anonymous")
+  body
+    include ../_includes/header/header
+    block content
+    include ../_includes/footer/footer
+    //- script(
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"
+      integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw="
+      crossorigin="anonymous")
+    //- script.
+      hljs.initHighlightingOnLoad();

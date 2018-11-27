@@ -1,4 +1,11 @@
+sudo: false
 language: node_js
 node_js:
-  - "iojs"
-  - "7"
+  - "lts/*"
+
+cache:
+  yarn: true
+
+before_script:
+  - npm install -g gulp-cli
+script: gulp build --production

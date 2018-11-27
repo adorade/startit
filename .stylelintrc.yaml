@@ -1,0 +1,124 @@
+# extends
+extends: stylelint-config-standard
+# ignoreFiles
+ignoreFiles: node_modules/**/*
+# plugins
+plugins: [ stylelint-scss, stylelint-order ]
+# rules
+rules:
+  # General Style
+  indentation: 2
+  max-empty-lines: 2
+  no-eol-whitespace: true
+  no-missing-end-of-source-newline: true
+  no-extra-semicolons: true
+  no-unknown-animations: true
+  number-leading-zero: never
+  at-rule-no-unknown: null
+  # at-rule-empty-line-before:
+    # - always
+    # - except: [ inside-block, blockless-after-same-name-blockless, first-nested ]
+  at-rule-empty-line-before:
+    - null
+    - except: [ first-nested ]
+      ignore: [ after-comment ]
+  rule-empty-line-before:
+    - always-multi-line
+    - except: [ inside-block-and-after-rule, first-nested ]
+      ignore: [ after-comment, inside-block ]
+  block-closing-brace-newline-after:
+    - always
+    - ignoreAtRules: [ if, else ]
+  declaration-empty-line-before: never
+
+  # Specify what quotes must be used using
+  font-family-name-quotes: always-where-recommended
+  function-url-quotes: never
+  selector-attribute-quotes: always
+  string-quotes: double
+
+  # If you use autoprefixer you'll want to disallow vendor prefixes using
+  # at-rule-no-vendor-prefix: true
+  media-feature-name-no-vendor-prefix: true
+  # property-no-vendor-prefix: true
+  selector-no-vendor-prefix: true
+  value-no-vendor-prefix: true
+
+  # Control specificity using:
+  max-nesting-depth: 5
+
+  # Specify acceptable selector types, units, properties, functions and words in comments using
+  color-named: never
+  # color-no-hex: true
+  comment-word-blacklist:
+    - [ /^TODO:/, /^FIXME:/ ]
+    - severity: warning
+  declaration-property-unit-blacklist:
+    # font-size: [ 'em' ]
+    line-height: [ 'px', 'em', 'rem' ]
+  declaration-property-unit-whitelist:
+    font-size: [ 'rem', 'em', 'px', '%' ]
+    /^animation/: [ 's' ]
+    /^transition/: [ 's' ]
+  # unit-blacklist: [ em ]
+
+  # Specify a notation when there are one or more valid representations using
+  font-weight-notation: named-where-possible
+
+  # Specify what types of URLs are allowed using
+  function-url-no-scheme-relative: true
+
+  # -- Plugin Rules
+  scss/at-rule-no-unknown: true
+  scss/double-slash-comment-empty-line-before:
+    - always
+    - except: [ first-nested ]
+      ignore: [ between-comments, stylelint-commands ]
+  # scss/double-slash-comment-inline: never
+  scss/double-slash-comment-whitespace-inside: always
+
+  # Specify the order of properties using
+  order/properties-order:
+    -
+      - properties: [
+        # Layout Properties (position, float, clear, display, box-sizing, overflow, flex)
+          position, top, right, bottom, left, z-index,
+          display, box-sizing, float, clip, clear,
+          overflow, overflow-x, overflow-y, '-webkit-overflow-scrolling', '-ms-overflow-style',
+          flex, flex-grow, flex-shrink, flex-basis, flex-flow, flex-direction, flex-wrap,
+          order, justify-content, align-items, align-content, align-self,
+        # Box Model Properties (width, height, margin, padding)
+          width, min-width, max-width, height, min-height, max-height,
+          margin, margin-top, margin-right, margin-bottom, margin-left,
+          padding, padding-top, padding-right, padding-bottom, padding-left,
+        # Border Properties (border)
+          border, border-width, border-style, border-color,
+          border-top, border-top-width, border-top-style, border-top-color,
+          border-right, border-right-width, border-right-style, border-right-color,
+          border-bottom, border-bottom-width, border-bottom-style, border-bottom-color,
+          border-left, border-left-width, border-left-style, border-left-color,
+          border-radius, border-top-left-radius, border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius,
+          border-image, border-image-source, border-image-slice, border-image-width, border-image-outset, border-image-repeat,
+        # Visual Properties (background, outline)
+          background, background-image, background-position, background-size, background-repeat,
+          background-origin, background-clip, background-attachment, background-color,
+        # Typography Properties (color, font-*, line-height, text-*)
+          color, font, font-family, font-size, line-height, font-style, font-variant, font-weight, font-stretch, font-size-adjust,
+          text-align, text-align-last, text-combine-upright, text-emphasis, text-decoration,
+          text-indent, text-justify, text-orientation, text-overflow, text-rendering,
+          text-shadow, text-transform, text-underline-position, '-webkit-text-size-adjust', '-ms-text-size-adjust',
+          letter-spacing, word-break, word-spacing, word-wrap, overflow-wrap, tab-size, white-space, vertical-align,
+          list-style, list-style-position, list-style-type, list-style-image,
+        # Misc Properties
+          outline, outline-width, outline-style, outline-color, outline-offset, box-shadow, opacity,
+          columns, column-count, column-fill, column-gap, column-span, column-width,
+          column-rule, column-rule-style, column-rule-width, column-rule-color,
+          transform, transform-box, transform-origin, transform-style,
+          transition, transition-delay, transition-duration, transition-property, transition-timing-function,
+          animation, animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count,
+          animation-direction, animation-fill-mode, animation-play-state,
+          table-layout, empty-cells, caption-side, border-spacing, border-collapse,
+          pointer-events, touch-action, cursor, visibility, zoom, speak,
+          content, quotes, counter-reset, counter-increment, resize, user-select, caption-side
+          ]
+    - unspecified: bottom

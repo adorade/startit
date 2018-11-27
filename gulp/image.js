@@ -1,79 +1,72 @@
+/*!
+ * Uni-Starter - image.js - 1.0.0
+ * Copyright (c) 2017 Adorade (https://www.adorade.ro)
+ * Licensed under MIT
+ * ========================================================================= */
 'use strict';
 
-import path from 'path';
-import pngquant from 'imagemin-pngquant';
-import jpegoptim from 'imagemin-jpegoptim';
-import optipng from 'imagemin-optipng';
-import gifsicle from 'imagemin-gifsicle';
-import svgo from 'imagemin-svgo';
-import { getImageCollection } from './util/util';
-import mergeStream from 'merge-stream';
-import gulpConfig from './util/config';
+import { debugInfo } from './util/handler';
 
+// Compressing new and modified images
 const image = ({
   gulp,
-  config,
   plugins,
+  args,
+  config,
   taskTarget,
-  args
+  browserSync
 }) => {
-  const dir = config.directory;
-  const dest = path.join(taskTarget, dir.asset.replace(/\_/, ''), dir.image);
-  const templateCollection = dir.templateCollection;
-  const templateImagePathCollection = templateCollection.map(folderName => {
-    return {
-      source: path.join(
-        dir.source,
-        `_${folderName}`,
-        gulpConfig.fileExpression.image
-      ),
-      dest: path.join(
-        taskTarget,
-        `${folderName}`
-      )
-    };
-  });
+  const paths = config.paths;
+  const fileExt = config.options.fileExt;
 
-  const assetImagePath = path.join(
-    dir.source,
-    dir.asset,
-    dir.image,
-    gulpConfig.fileExpression.image
-  );
+  taskTarget = args.production ? paths.images.prod : paths.images.dev;
+  const dest = taskTarget;
 
+  // Optimize images
   gulp.task('image', () => {
-    let gulpStreamCollection = templateImagePathCollection
-      .map(({source, dest}) => getImageCollection({
-        source,
-        gulp,
-        config,
-        plugins,
-        pngquant,
-        jpegoptim,
-        gifsicle,
-        svgo,
-        dest,
-        optipng,
-        args
+    return gulp
+      .src(paths.images.src + fileExt.image, {
+        // Only deal with files that change in the pipeline
+        since: gulp.lastRun('image')
       })
-    );
-
-    let assetImageCollection = getImageCollection({
-      source: assetImagePath,
-      gulp,
-      config,
-      plugins,
-      pngquant,
-      jpegoptim,
-      gifsicle,
-      svgo,
-      dest,
-      optipng,
-      args
-    });
-
-    return mergeStream(gulpStreamCollection, assetImageCollection);
+      // .pipe(plugins.changed(dest))
+      // .pipe(plugins.if(
+      //   args.production,
+      .pipe(
+        plugins.imagemin([
+          // plugins.imagemin.gifsicle({ interlaced: true }),
+          plugins.imagemin.jpegtran({ progressive: true, max: 85 }),
+          plugins.imagemin.optipng({ optimizationLevel: 5 }),
+          plugins.imagemin.svgo({ plugins: [{ removeViewBox: true }] })
+        ])
+      // ))
+      )
+      .pipe(gulp.dest(dest));
+    // .pipe(browserSync.stream({ match: fileExt.image }));
   });
+
+  // Convert for web
+  gulp.task('convert', () => {
+    return gulp
+      .src(paths.images.src + fileExt.webp, {
+        // Only deal with files that change in the pipeline
+        since: gulp.lastRun('convert')
+      })
+      .pipe(debugInfo({ title: 'Convert image:' }))
+      .pipe(plugins.webp({
+        preset: 'default',
+        quality: 65
+      }))
+      .pipe(gulp.dest(dest));
+    // .pipe(browserSync.stream({ match: fileExt.image }));
+  });
+
+  // And The Imagine
+  const imagine = gulp.series(
+    'image',
+    'convert'
+  );
+  gulp.task('imagine', imagine);
 };
 
 export default image;

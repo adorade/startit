@@ -1,0 +1,10 @@
+extends ../_layout/base
+
+block settings
+  - title = 'Docs for Uni Starter';
+  - description = 'Docs for all tasks';
+  - currentUrl = 'docs/docs.html';
+
+block content
+  h1 #{title}!
+  include:markdown-it ../../docs/BUILD-TOOLS.md

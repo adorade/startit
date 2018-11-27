@@ -1,9 +1,13 @@
-import fs from 'fs';
-// foldero - will load files from the folder you specify and construct an object
-// with properties corresponding to each loaded file
-import foldero from 'foldero';
+/*!
+ * Uni-Starter - util.js - 1.0.0
+ * Copyright (c) 2017 Adorade (https://www.adorade.ro)
+ * Licensed under MIT
+ * ========================================================================= */
+'use strict';
 
-const printError = error => `<h1 style="color:#c00">Error</h1><pre style="text-align:left">${error.message}</pre>`
+import fs from 'fs';
+import foldero from 'foldero';
+import log from 'fancy-log';
 
 const getJsonData = obj => {
   if (fs.existsSync(obj.dataPath)) {
@@ -17,8 +21,8 @@ const getJsonData = obj => {
           json = JSON.parse(fs.readFileSync(file, 'utf8'));
         }
         catch (e) {
-          console.log(`Error parsing data file: ${file}`);
-          console.log(e);
+          log(`Error parsing data file: ${file}`);
+          log(e);
         }
 
         return json;
@@ -27,32 +31,9 @@ const getJsonData = obj => {
   }
 };
 
-const getImageCollection = obj => {
-  return obj.gulp
-  .src(obj.source)
-  .pipe(obj.plugins.changed(obj.dest))
-  .pipe(obj.plugins.if(
-    obj.args.production,
-    obj.plugins.imagemin([
-      obj.plugins.imagemin.gifsicle({interlaced: true}),
-      obj.jpegoptim({progressive: true, max: 85}),
-      obj.plugins.imagemin.optipng({optimizationLevel: 5}),
-      obj.plugins.imagemin.svgo({plugins: [{removeViewBox: true}]})
-    ])
-  ))
-  .pipe(obj.gulp.dest(obj.dest));
-};
-
-const getStaticFiles = ({staticFilePath, dest, gulp, plugins}) => {
-  return gulp
-    .src(staticFilePath)
-    .pipe(plugins.changed(dest))
-    .pipe(gulp.dest(dest));
-};
+const printError = error => `<h1 style="color:#c00">Error</h1><pre style="text-align:left">${error.message}</pre>`;
 
 export {
-  getStaticFiles,
   getJsonData,
-  getImageCollection,
   printError
 };

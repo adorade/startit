@@ -1,0 +1,13 @@
+// Style File
+
+@import "components/color";
+@import "components/typography";
+@import "components/header";
+@import "components/footer";
+@import "layout/layout";
+
+div,
+p {
+  margin: 1rem;
+  padding: 1rem;
+}

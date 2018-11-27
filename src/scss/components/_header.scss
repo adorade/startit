@@ -1,0 +1,29 @@
+$class: "top-menu";
+
+.#{$class} {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  border-bottom-right-radius: .2rem;
+  border-bottom-left-radius: .2rem;
+  background-color: $don-juan;
+  list-style-type: none;
+}
+
+.#{$class}-link {
+  padding: .5rem .8rem;
+  border-bottom: none;
+  color: $white;
+  text-decoration: none;
+
+  &:hover {
+    color: $de-york;
+  }
+
+  .active > & {
+    background-color: $alto;
+    color: $de-york;
+  }
+}

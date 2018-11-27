@@ -1,8 +1,22 @@
 {
   "name": "uni-starter",
   "version": "1.0.0",
-  "description": "Simple pug (jade) starter [framework] enabling faster delivery of HTML & CSS projects to a private server and/or automatic deployment of GitHub pages.",
+  "description": "Uni Starter is a simple pug [framework] enabling faster delivery of projects to a private server and/or automatic deployment of GitHub pages.",
+  "author": "Adorade",
+  "keywords": [
+    "unikorn",
+    "starter",
+    "pug"
+  ],
   "main": "index.js",
+  "homepage": "https://github.com/adorade/uni-starter#readme",
+  "bugs": {
+    "url": "https://github.com/adorade/uni-starter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adorade/uni-starter.git"
+  },
   "scripts": {
     "dev": "gulp dev",
     "start": "gulp dev",
@@ -10,87 +24,50 @@
     "deploy": "gulp build --production && gulp deploy && gulp clean:ghpages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "//": "CUSTOM CONFIGURATION",
-  "config": {
-    "directory": {
-      "development": "tmp",
-      "production": "build",
-      "ghpages": ".publish",
-      "source": "src",
-      "data": "_data",
-      "component": "_component",
-      "layout": "_layout",
-      "asset": "_asset",
-      "image": "image",
-      "font": "font",
-      "templateCollection": [
-        "article",
-        "product"
-      ]
-    },
-    "render": {
-      "sourceFileChange": false,
-      "url": {
-        "//": "this is recommended to avoid Linux/Windows capitalization issue",
-        "htmlExtensionOn": false,
-        "toLowercase": true
-      }
-    },
-    "entry": {
-      "cssExternal": "style**.{scss,sass}",
-      "cssInline": "inline**.{scss,sass}",
-      "css": {
-        "inline": false,
-        "external": true
-      }
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/adorade/uni-starter.git"
-  },
-  "keywords": [
-    "pug",
-    "starter",
-    "jade",
-    "starter"
-  ],
-  "author": "Adorade",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/adorade/uni-starter/issues"
-  },
-  "homepage": "https://github.com/adorade/uni-starter#readme",
+  "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^6.7.5",
-    "babel-core": "^6.23.1",
-    "babel-eslint": "^7.1.1",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.6.1",
-    "browser-sync": "^2.18.8",
-    "eslint": "^3.16.1",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/register": "^7.0.0",
+    "ansi-colors": "^3.2.1",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "beeper": "^1.1.1",
+    "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
+    "eslint": "^5.9.0",
+    "fancy-log": "^1.3.2",
     "foldero": "^0.1.1",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-cached": "^1.1.1",
-    "gulp-changed": "^2.0.0",
-    "gulp-changed-in-place": "^2.2.0",
-    "gulp-debug": "^3.1.0",
-    "gulp-gh-pages": "^0.5.4",
+    "gulp-changed": "^3.2.0",
+    "gulp-changed-in-place": "^2.3.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.1.1",
-    "gulp-inline-source": "^3.0.0",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-inline-source": "^4.0.0",
     "gulp-load-plugins": "^1.5.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.3.0",
-    "gulp-pug": "^3.2.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.4.1",
-    "imagemin-jpegoptim": "^5.0.0",
-    "imagemin-pngquant": "^5.0.0",
-    "imagemin-svgo": "^5.2.0",
-    "jstransformer-markdown-it": "^2.0.0",
-    "merge-stream": "^1.0.1",
-    "minimist": "^1.2.0"
-  }
+    "gulp-newer": "^1.4.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-pug-linter": "^1.1.0",
+    "gulp-remember": "^1.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-stylelint": "^8.0.0",
+    "gulp-webp": "^3.0.0",
+    "jstransformer-markdown-it": "^2.1.0",
+    "jstransformer-remarkable": "^1.2.0",
+    "minimist": "^1.2.0",
+    "stylelint": "^9.8.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^2.0.0",
+    "stylelint-scss": "^3.4.0",
+    "through2": "^3.0.0"
+  },
+  "license": "MIT",
+  "private": true
 }

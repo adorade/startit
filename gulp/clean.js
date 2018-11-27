@@ -1,28 +1,41 @@
+/*!
+ * Uni-Starter - clean.js - 1.0.0
+ * Copyright (c) 2017 Adorade (https://www.adorade.ro)
+ * Licensed under MIT
+ * ========================================================================= */
 'use strict';
 
-import path from 'path';
 import del from 'del';
 
+// Clean output folder at the start of every run
 const clean = ({
   gulp,
   config
 }) => {
-  const dir = config.directory;
+  const dir = config.dirs;
 
-  // clean development project
-  gulp.task('clean:development', del.bind(null, [
-    path.join(dir.development)
-  ]));
+  // Clean development output folder
+  gulp.task('clean:development', () => {
+    return del(dir.dev);
+  });
 
-  // clean development project
-  gulp.task('clean:production', del.bind(null, [
-    path.join(dir.production)
-  ]));
+  // Clean production output folder
+  gulp.task('clean:production', () => {
+    return del(dir.prod);
+  });
 
-  // clean development project
-  gulp.task('clean:ghpages', del.bind(null, [
-    path.join(dir.ghpages)
-  ]));
+  // Clean GitHub pages output folder
+  gulp.task('clean:ghpages', () => {
+    return del(dir.ghpages);
+  });
+
+  // And The Cleaner
+  const cleaner = gulp.series(
+    'clean:development',
+    'clean:production',
+    'clean:ghpages'
+  );
+  gulp.task('cleaner', cleaner);
 };
 
 export default clean;

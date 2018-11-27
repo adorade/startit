@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Home",
+    "link": "index.html"
+  },
+  {
+    "label": "About",
+    "link": "about.html"
+  },
+  {
+    "label": "Contact",
+    "link": "contact.html"
+  },
+  {
+    "label": "Test",
+    "link": "test.html"
+  },
+  {
+    "label": "Docs",
+    "link": "docs/docs.html"
+  }
+]

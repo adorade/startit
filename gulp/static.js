@@ -1,12 +1,12 @@
 /*!
- * Uni-Starter - font.js - 1.0.0
+ * Uni-Starter - static.js - 1.0.0
  * Copyright (c) 2017 Adorade (https://www.adorade.ro)
  * Licensed under MIT
  * ========================================================================= */
 'use strict';
 
-// Copy font files
-const font = ({
+// Copy static files
+const statics = ({
   gulp,
   plugins,
   args,
@@ -17,19 +17,18 @@ const font = ({
   const paths = config.paths;
   const fileExt = config.options.fileExt;
 
-  taskTarget = args.production ? paths.fonts.prod : paths.fonts.dev;
+  taskTarget = args.production ? paths.static.prod : paths.static.dev;
   const dest = taskTarget;
 
-  gulp.task('font', () => {
+  gulp.task('static', () => {
     return gulp
-      .src(paths.fonts.src + fileExt.font, {
+      .src(paths.static.src + fileExt.static, {
         // Only deal with files that change in the pipeline
-        since: gulp.lastRun('font')
+        since: gulp.lastRun('static')
       })
-      // .pipe(plugins.changed(dest))
-      .pipe(gulp.dest(dest));
-    // .pipe(browserSync.stream({ match: fileExt.font }));
+      .pipe(gulp.dest(dest))
+      .pipe(browserSync.stream({ match: fileExt.static }));
   });
 };
 
-export default font;
+export default statics;

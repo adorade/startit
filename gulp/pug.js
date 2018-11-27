@@ -1,43 +1,65 @@
+/*!
+ * Uni-Starter - pug.js - 1.0.0
+ * Copyright (c) 2017 Adorade (https://www.adorade.ro)
+ * Licensed under MIT
+ * ========================================================================= */
 'use strict';
 
 import fs from 'fs';
-import path from 'path';
+import log from 'fancy-log';
 import { getJsonData, printError } from './util/util';
+import { debugInfo } from './util/handler';
 
+// Generating HTML from templates and content files
 const pug = ({
   gulp,
-  taskTarget,
-  config,
   plugins,
   args,
+  config,
+  taskTarget,
   browserSync
 }) => {
-  const dir = config.directory;
-  const dataPath = path.join(dir.source, dir.data);
-  const inlinePath = path.join(taskTarget, 'inline.css');
+  const paths = config.paths;
+  // const render = config.options.render;
+  const entry = config.options.entry;
+  const fileExt = config.options.fileExt;
 
-  gulp.task('pug', () => {
-    let data = getJsonData({dataPath}) || {},
-        reload = true;
+  if (args.production) {
+    entry.css.inline = true;
+    entry.css.external = false;
+  }
+
+  const dataPath = paths.views.data;
+  const inlinePath = taskTarget + '/css/inline.css';
+
+  gulp.task('pug', gulp.series('lint:pug', () => {
+    let data = getJsonData({dataPath}) || {};
 
     return gulp
-      // target pug files
       .src([
-        path.join(dir.source, '**/*.pug'),
+        paths.views.src + fileExt.pug,
         // Ignore files and folders that start with "_"
-        '!' + path.join(dir.source, '{**/\_*,**/\_*/**}')
-      ])
+        '!' + paths.views.src + '{**/_*,**/_*/**}'
+      ], {
+        // Only deal with files that change in the pipeline
+        // since: gulp.lastRun('pug')
+      })
+      .pipe(debugInfo({ title: 'Pug files:' }))
       // Only deal with files that change in the pipeline
-      .pipe(plugins.if(
-        config.render.sourceFileChange,
-        plugins.changedInPlace({ firstPass: true })
-      ))
+      // .pipe(plugins.changedInPlace({ firstPass: true }))
+      // .pipe(plugins.if(
+      //   render.sourceFileChange,
+      //   plugins.changedInPlace({ firstPass: true })
+      // ))
+      // .pipe(debugInfo({ title: 'First pass:' }))
       // Render if any pug files is changed and compare
       // the output with the destination file
-      .pipe(plugins.if(
-        !config.render.sourceFileChange,
-        plugins.changed(taskTarget)
-      ))
+      // .pipe(plugins.changed(taskTarget))
+      // .pipe(plugins.if(
+      //   !render.sourceFileChange,
+      //   plugins.changed(taskTarget)
+      // ))
+      // .pipe(debugInfo({ title: 'Only changed:' }))
       .pipe(plugins.plumber())
       // compile pug to html
       .pipe(plugins.pug({
@@ -47,30 +69,28 @@ const pug = ({
         locals: {
           config,
           // debug: true,
+          entry,
           data,
           taskTarget,
           inlinePath
         }
       }))
-      .on('error', function(error) {
-        browserSync.notify(printError(error), 25000);
-        console.log(error);
-        reload = false;
+      .on('error', function(err) {
+        log.error(err);
+        browserSync.notify(printError(err), 25000);
         this.emit('end');
       })
       // Check if inline.css exists and use inlineSource to inject it
       .pipe(plugins.if(
         fs.existsSync(inlinePath),
         plugins.inlineSource({
-          rootpath: path.join(__dirname, '..')
+          rootpath: './'
         })
       ))
-      .pipe(gulp.dest(path.join(taskTarget)))
-      // .on('end', browserSync.reload);
-      .on('end', () => {
-        reload && browserSync.reload();
-      });
-  });
+      .pipe(debugInfo({ title: 'Dest:' }))
+      .pipe(gulp.dest(taskTarget))
+      .pipe(browserSync.stream({ match: fileExt.html }));
+  }));
 };
 
 export default pug;

@@ -1,18 +1,22 @@
+/*!
+ * Uni-Starter - deploy.js - 1.0.0
+ * Copyright (c) 2017 Adorade (https://www.adorade.ro)
+ * Licensed under MIT
+ * ========================================================================= */
 'use strict';
 
-import path from 'path';
-import del from 'del';
-
+// Deploy files to Github Pages
 const deploy = ({
   gulp,
-  config,
-  plugins
+  plugins,
+  config
 }) => {
-  const dir = config.directory;
+  const dir = config.dirs;
+  const fileExt = config.options.fileExt;
 
-  // deploy
   gulp.task('deploy', () => {
-    return gulp.src(path.join(dir.production, '**/*'))
+    return gulp
+      .src(dir.prod + fileExt.deploy)
       .pipe(plugins.ghPages());
   });
 };

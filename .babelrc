@@ -1,10 +1,16 @@
 {
   "presets": [
-    "env"
+    "@babel/env"
   ],
-  "plugins":[
-    [
-      "add-module-exports"
-    ]
-  ]
+  "plugins": [
+    "add-module-exports"
+  ],
+  "env": {
+    "development": {
+      "plugins": []
+    },
+    "production": {
+      "plugins": []
+    }
+  }
 }
