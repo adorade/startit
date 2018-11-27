@@ -5,6 +5,15 @@ build
 logs
 .extra
 
+# To do Tasks
+.TODO
+
+# Logs
+logs
+
+# Ignore docs files
+# docs
+
 # Files to ignore
 npm-debug.log*
 
@@ -34,3 +43,7 @@ npm-debug.log*
 *.sublime-workspace
 nbproject
 Thumbs.db
+desktop.ini
+
+# Local icons
+*_*.ico
