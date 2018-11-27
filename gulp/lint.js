@@ -44,7 +44,7 @@ const lint = ({
 
   // lint *.es6 sources files
   gulp.task('lint:script', () => {
-    const output = fs.createWriteStream('logs/gulp/scripts.txt');
+    // const output = fs.createWriteStream('logs/gulp/scripts.txt');
 
     return gulp
       .src(paths.scripts.src + fileExt.script, {
@@ -59,7 +59,8 @@ const lint = ({
         // fix: true
       }))
       .pipe(plugins.eslint.format())
-      .pipe(plugins.eslint.format('stylish', output))
+      // .pipe(plugins.eslint.format('stylish', output))
+      .pipe(plugins.eslint.format('stylish'))
       .pipe(plugins.eslint.failAfterError());
   });
 
