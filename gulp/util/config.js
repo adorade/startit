@@ -1,6 +1,6 @@
 /*!
- * Uni-Starter - config.js - 1.0.0
- * Copyright (c) 2017 Adorade (https://www.adorade.ro)
+ * Uni-Starter (v1.0.0): config.js
+ * Copyright (c) 2017 - 2018 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================= */
 

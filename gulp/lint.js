@@ -1,6 +1,6 @@
 /*!
- * Uni-Starter - lint.js - 1.0.0
- * Copyright (c) 2017 Adorade (https://www.adorade.ro)
+ * Uni-Starter (v1.0.0): lint.js
+ * Copyright (c) 2017 - 2018 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================= */
 'use strict';
