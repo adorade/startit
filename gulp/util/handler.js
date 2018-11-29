@@ -50,14 +50,6 @@ const watchEvent = (path, event, task) => {
   // beeper();
 };
 
-// const unLink = (filepath) => {
-//   log(`File ${colors.magenta(filepath)} was removed`);
-//   // log(`Extension: ${filepath.extname}`);
-//   // let filePathFromSrc = path.relative(path.resolve('src'), filepath);
-//   // let destFilePath = path.resolve('dist', filePathFromSrc);
-//   // del.sync(destFilePath);
-// };
-
 const debugInfo = options => {
   options = Object.assign({
     title: 'Debug:',
