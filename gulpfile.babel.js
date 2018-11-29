@@ -18,11 +18,6 @@ import browserSyncLib from 'browser-sync';
 import minimist from 'minimist';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
-// For fancy log, colors, beep in console
-import log from 'fancy-log';
-import colors from 'ansi-colors';
-import beeper from 'beeper';
-
 // Import project configuration as configs
 // import { dirs, paths, options } from './gulp/util/config';
 import * as configs from './gulp/util/config';
@@ -86,17 +81,11 @@ export const dev = gulp.series(
 );
 dev.description = 'Development task with serve';
 
-// Test gulp configuration task
-gulp.task('setting', done => {
-  const gulpTree = gulp.tree();
-  log(colors.green('Gulp Tasks:\n'), gulpTree.nodes);
-  // log(colors.magenta('Directories configuration:\n'), config.dirs);
-  // log(colors.magenta('Paths configuration:\n'), config.paths);
-  // log(colors.magenta('Options configuration:\n'), config.options);
-  // log(colors.blue('Task Target:'), taskTarget);
-  beeper('***-***-***');
-  done();
-});
+// Check gulp configuration task
+export const check =  gulp.series(
+  'settings'
+);
+check.description = 'Check gulp configuration';
 
 // Default gulp task
 export default dev;
