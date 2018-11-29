@@ -7,7 +7,7 @@
 
 // import fs from 'fs';
 // import log from 'fancy-log';
-import { handleError, debugInfo } from './util/handler';
+import { debugInfo } from './util/handler';
 
 // Code linting and validation
 const lint = ({
@@ -25,9 +25,6 @@ const lint = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('lint:style')
       })
-      .pipe(plugins.plumber({
-        errorHandler: handleError
-      }))
       .pipe(debugInfo({ title: 'Lint style:' }))
       .pipe(plugins.stylelint({
         failAfterError: true,
@@ -51,9 +48,6 @@ const lint = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('lint:script')
       })
-      .pipe(plugins.plumber({
-        errorHandler: handleError
-      }))
       .pipe(debugInfo({ title: 'Lint script:' }))
       .pipe(plugins.eslint({
         // fix: true
@@ -71,9 +65,6 @@ const lint = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('lint:pug')
       })
-      .pipe(plugins.plumber({
-        errorHandler: handleError
-      }))
       .pipe(debugInfo({ title: 'Lint pug:' }))
       .pipe(plugins.pugLinter({ reporter: 'default' }))
       .pipe(plugins.pugLinter({ failAfterError: true }));

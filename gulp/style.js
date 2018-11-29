@@ -44,9 +44,6 @@ const style = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('style')
       })
-      .pipe(plugins.plumber({
-      //   errorHandler: handleError
-      }))
       .pipe(debugInfo({ title: 'Compile:' }))
       .pipe(plugins.sass({
         outputStyle: args.production ? 'compressed' : 'expanded',

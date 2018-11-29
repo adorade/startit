@@ -44,7 +44,6 @@ const pug = ({
         // since: gulp.lastRun('pug')
       })
       .pipe(debugInfo({ title: 'Pug files:' }))
-      .pipe(plugins.plumber())
       // compile pug to html
       .pipe(plugins.pug({
         // compress if in production

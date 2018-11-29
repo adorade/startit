@@ -5,7 +5,7 @@
  * ========================================================================= */
 'use strict';
 
-import { handleError, debugInfo } from './util/handler';
+import { debugInfo } from './util/handler';
 
 // Transpiling ES6 to cross-browser-compatible ES5 code
 const scripts = ({
@@ -29,9 +29,6 @@ const scripts = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('script')
       })
-      .pipe(plugins.plumber({
-        errorHandler: handleError
-      }))
       .pipe(debugInfo({ title: 'Transpile:' }))
       .pipe(plugins.babel({
         presets: ['@babel/preset-env']
