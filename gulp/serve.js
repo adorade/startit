@@ -7,7 +7,6 @@
 
 import log from 'fancy-log';
 import colors from 'ansi-colors';
-// import beeper from 'beeper';
 import { watchEvent } from './util/handler';
 
 // Automatically reload assets or refresh your browser when changes occur
@@ -28,24 +27,12 @@ const serve = ({
     if (!args.production) {
       // Serve files from the 'tmp' directory of this project
       browserSync.init({
-        // server: taskTarget,
         server: {
           baseDir: taskTarget
         },
-        // Customize the Browsersync console logging prefix
         logPrefix: 'Uni-Starter',
-        // Run as an https by uncommenting 'https: true'
-        // Note: this uses an unsigned certificate which on first access
-        //       will present a certificate warning in the browser.
-        // https: true,
-        // https: {
-        //   key: 'path-to-custom.key',
-        //   cert: 'path-to-custom.crt'
-        // },
-        // notify: false,
         port: 1234,
-        ui: false// ,
-        // plugins: ['bs-console-info']
+        ui: false
       });
 
       const watchers = [
@@ -100,36 +87,7 @@ const serve = ({
           .on('all', (event, path) => {
             // event = event[event.length - 1] === 'e' ? event + 'd' : event + 'ed';
             watchEvent(path, event, watcher.tasks);
-
-            // if (event === 'unlink') {
-            //   unLink(path);
-            //   log('File', path, 'was removed');
-            //   delete plugins.cached.caches[watcher.tasks][path];    // gulp-cached remove api
-            //   plugins.remember.forget(watcher.tasks, path);         // gulp-remember remove api
-            // }
-
-            // if (event === 'change') {
-            //   log(`File ${path} was changed`)
-            // }
-
-            // if (event === 'add') {
-            //   log(`File ${path} was added`);
-            // }
           });
-        // // Add event listeners.
-        // .on('all', (event, path) => log(`${path} emitted ${event}`))
-        // .on('add', path => log(`File ${path} was added`))
-        // .on('change', path => log(`File ${path} was changed`))
-        // .on('unlink', path => log(`File ${path} was removed`))
-
-        // // More possible events.
-        // .on('addDir', path => log(`Directory ${path} has been added`))
-        // .on('unlinkDir', path => log(`Directory ${path} has been removed`))
-        // .on('error', error => log(`Watcher error: ${error}`))
-        // .on('ready', () => log('Initial scan complete. Ready for changes'))
-        // .on('raw', (event, path, details) => {
-        //   log('Raw event info:', event, path, details);
-        // })
       }
     }
   });

@@ -29,18 +29,12 @@ const image = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('image')
       })
-      // .pipe(plugins.changed(dest))
-      // .pipe(plugins.if(
-      //   args.production,
-      .pipe(
-        plugins.imagemin([
-          // plugins.imagemin.gifsicle({ interlaced: true }),
-          plugins.imagemin.jpegtran({ progressive: true, max: 85 }),
-          plugins.imagemin.optipng({ optimizationLevel: 5 }),
-          plugins.imagemin.svgo({ plugins: [{ removeViewBox: true }] })
-        ])
-      // ))
-      )
+      .pipe(plugins.imagemin([
+        // plugins.imagemin.gifsicle({ interlaced: true }),
+        plugins.imagemin.jpegtran({ progressive: true, max: 85 }),
+        plugins.imagemin.optipng({ optimizationLevel: 5 }),
+        plugins.imagemin.svgo({ plugins: [{ removeViewBox: true }] })
+      ]))
       .pipe(gulp.dest(dest));
     // .pipe(browserSync.stream({ match: fileExt.image }));
   });

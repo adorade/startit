@@ -20,7 +20,6 @@ const pug = ({
   browserSync
 }) => {
   const paths = config.paths;
-  // const render = config.options.render;
   const entry = config.options.entry;
   const fileExt = config.options.fileExt;
 
@@ -45,21 +44,6 @@ const pug = ({
         // since: gulp.lastRun('pug')
       })
       .pipe(debugInfo({ title: 'Pug files:' }))
-      // Only deal with files that change in the pipeline
-      // .pipe(plugins.changedInPlace({ firstPass: true }))
-      // .pipe(plugins.if(
-      //   render.sourceFileChange,
-      //   plugins.changedInPlace({ firstPass: true })
-      // ))
-      // .pipe(debugInfo({ title: 'First pass:' }))
-      // Render if any pug files is changed and compare
-      // the output with the destination file
-      // .pipe(plugins.changed(taskTarget))
-      // .pipe(plugins.if(
-      //   !render.sourceFileChange,
-      //   plugins.changed(taskTarget)
-      // ))
-      // .pipe(debugInfo({ title: 'Only changed:' }))
       .pipe(plugins.plumber())
       // compile pug to html
       .pipe(plugins.pug({
@@ -68,7 +52,6 @@ const pug = ({
         // Make data available to pug
         locals: {
           config,
-          // debug: true,
           entry,
           data,
           taskTarget,
