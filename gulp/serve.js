@@ -6,7 +6,7 @@
 'use strict';
 
 import log from 'fancy-log';
-import colors from 'ansi-colors';
+import { magenta, bgBlue, bgRed } from 'ansi-colors';
 import { watchEvent } from './util/handler';
 
 // Automatically reload assets or refresh your browser when changes occur
@@ -74,10 +74,10 @@ const serve = ({
       ];
 
       for (let watcher of watchers) {
-        log(colors.bgRed(colors.white(`Watching ${watcher.name}`)));
+        log(bgRed(`Watching ${watcher.name}`));
 
         for (let p of [watcher.paths]) {
-          log(colors.magenta(`Source: ${p}`));
+          log(`${bgBlue('Source:')} ${magenta(p)}`);
         }
 
         gulp.watch(

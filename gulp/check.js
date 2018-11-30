@@ -7,7 +7,7 @@
 
 // For fancy log, colors, beep in console
 import log from 'fancy-log';
-import colors from 'ansi-colors';
+import { green, magenta } from 'ansi-colors';
 
 // Check gulp configuration
 const check = ({
@@ -17,11 +17,11 @@ const check = ({
 }) => {
   gulp.task('settings', done => {
     const gulpTree = gulp.tree();
-    log(colors.green('Gulp Tasks:\n'), gulpTree.nodes);
-    log(colors.magenta('Directories configuration:\n'), config.dirs);
-    log(colors.magenta('Paths configuration:\n'), config.paths);
-    log(colors.magenta('Options configuration:\n'), config.options);
-    log(colors.magenta('Task Target:'), taskTarget);
+    log(green('Gulp Tasks:\n'), gulpTree.nodes);
+    log(magenta('Directories configuration:\n'), config.dirs);
+    log(magenta('Paths configuration:\n'), config.paths);
+    log(magenta('Options configuration:\n'), config.options);
+    log(magenta('Task Target:'), taskTarget);
     done();
   });
 };

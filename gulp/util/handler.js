@@ -6,18 +6,13 @@
 'use strict';
 
 import log from 'fancy-log';
-import colors from 'ansi-colors';
+import { blue, green, magenta, red  } from 'ansi-colors';
 import through from 'through2';
-
-const { blue, green, magenta, red  } = colors;
 
 const watchEvent = (path, event, task) => {
   log(
-    'File', magenta(path),
-    'was', green(event),
-    'running', red(task)
+    `File ${magenta(path)} was ${green(event)} running ${red(task)}`
   );
-  // beeper();
 };
 
 const debugInfo = options => {
