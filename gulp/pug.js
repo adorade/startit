@@ -62,6 +62,7 @@ const pug = ({
         browserSync.notify(printError(err), 25000);
         this.emit('end');
       })
+      .pipe(plugins.cached('pug_compile'))
       // Check if inline.css exists and use inlineSource to inject it
       .pipe(plugins.if(
         fs.existsSync(inlinePath),

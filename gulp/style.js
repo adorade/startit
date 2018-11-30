@@ -40,9 +40,9 @@ const style = ({
   gulp.task('style', gulp.series('lint:style', () => {
     return gulp
       .src(cssPath, {
-        sourcemaps: true,
+        sourcemaps: true
         // Only deal with files that change in the pipeline
-        since: gulp.lastRun('style')
+        // since: gulp.lastRun('style')
       })
       .pipe(debugInfo({ title: 'Compile:' }))
       .pipe(plugins.sass({
@@ -56,6 +56,7 @@ const style = ({
         log.error(err);
         this.emit('end');
       })
+      .pipe(plugins.cached('sass_compile'))
       .pipe(plugins.autoprefixer({
         browsers: [
           'last 2 version',

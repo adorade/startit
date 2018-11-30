@@ -8,7 +8,6 @@
 // For fancy log, colors, beep in console
 import log from 'fancy-log';
 import colors from 'ansi-colors';
-import beeper from 'beeper';
 
 // Check gulp configuration
 const check = ({
@@ -23,7 +22,6 @@ const check = ({
     log(colors.magenta('Paths configuration:\n'), config.paths);
     log(colors.magenta('Options configuration:\n'), config.options);
     log(colors.magenta('Task Target:'), taskTarget);
-    beeper('***-***-***');
     done();
   });
 };

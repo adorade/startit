@@ -30,9 +30,7 @@ const scripts = ({
         since: gulp.lastRun('script')
       })
       .pipe(debugInfo({ title: 'Transpile:' }))
-      .pipe(plugins.babel({
-        presets: ['@babel/preset-env']
-      }))
+      .pipe(plugins.babel())
       .pipe(gulp.dest(dest, { sourcemaps: './' }))
       .pipe(browserSync.stream({ match: fileExt.js }));
   }));

@@ -6,40 +6,10 @@
 'use strict';
 
 import log from 'fancy-log';
-import beeper from 'beeper';
 import colors from 'ansi-colors';
-import notify from 'gulp-notify';
 import through from 'through2';
 
 const { blue, green, magenta, red  } = colors;
-
-const handleError = function(err) {
-  // User desktop notification
-  // ----------------------------------------------
-  notify.logLevel(0);
-  notify.onError({
-    title: `Gulp error in: ${err.plugin}`,
-    message: `Error: ${err.message}`,
-    sound: true,
-    wait: true,
-    type: 'error'
-  })(err);
-
-  // Pretty error reporting
-  // ----------------------------------------------
-  log(
-    blue(`[ Gulp error in: ${err.plugin} ]`),
-    red(`Error: ${err.message}`)
-  );
-
-  // System beep
-  // ----------------------------------------------
-  beeper();
-
-  // Prevent the 'watch' task from stopping
-  // ----------------------------------------------
-  this.emit('end');
-};
 
 const watchEvent = (path, event, task) => {
   log(
@@ -85,42 +55,7 @@ const debugInfo = options => {
   });
 };
 
-const eslintError = function (details) {
-
-  let messages = details.eslint.messages;
-  let messagesLength = details.eslint.messages.length;
-  let errorMessages = '';
-
-  // stop if there are no messages
-  if (messagesLength === 0) return;
-
-  // loop through array of messages
-  for (let error of messages) {
-    errorMessages += error.message + ' ';
-  }
-
-  // send message to user
-  notify.onError({
-    title: 'JavaScript error',
-    // message: 'Location: ' + details.relative + ' ' + errorMessages,
-    message: `Location: ${details.relative} ${errorMessages}`,
-    sound: 'Beep'
-  })(details);
-};
-
-const babelError = function (err) {
-  log.error('[Compilation Error]');
-  log.error(err.fileName + (err.loc ? `( ${err.loc.line}, ${err.loc.column} ): ` : ': '));
-  log.error('error Babel: ' + err.message + '\n');
-  log.error(err.codeFrame);
-
-  this.emit('end');
-};
-
 export {
-  handleError,
   watchEvent,
-  debugInfo,
-  eslintError,
-  babelError
+  debugInfo
 };

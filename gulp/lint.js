@@ -54,7 +54,6 @@ const lint = ({
       }))
       .pipe(plugins.eslint.format())
       // .pipe(plugins.eslint.format('stylish', output))
-      .pipe(plugins.eslint.format('stylish'))
       .pipe(plugins.eslint.failAfterError());
   });
 

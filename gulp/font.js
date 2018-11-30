@@ -26,8 +26,8 @@ const font = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('font')
       })
-      .pipe(gulp.dest(dest));
-    // .pipe(browserSync.stream({ match: fileExt.font }));
+      .pipe(gulp.dest(dest))
+      .pipe(browserSync.stream({ match: fileExt.font }));
   });
 };
 

@@ -30,13 +30,13 @@ const image = ({
         since: gulp.lastRun('image')
       })
       .pipe(plugins.imagemin([
-        // plugins.imagemin.gifsicle({ interlaced: true }),
+        plugins.imagemin.gifsicle({ interlaced: true }),
         plugins.imagemin.jpegtran({ progressive: true, max: 85 }),
         plugins.imagemin.optipng({ optimizationLevel: 5 }),
         plugins.imagemin.svgo({ plugins: [{ removeViewBox: true }] })
       ]))
-      .pipe(gulp.dest(dest));
-    // .pipe(browserSync.stream({ match: fileExt.image }));
+      .pipe(gulp.dest(dest))
+      .pipe(browserSync.stream({ match: fileExt.image }));
   });
 
   // Convert for web
@@ -51,8 +51,8 @@ const image = ({
         preset: 'default',
         quality: 65
       }))
-      .pipe(gulp.dest(dest));
-    // .pipe(browserSync.stream({ match: fileExt.image }));
+      .pipe(gulp.dest(dest))
+      .pipe(browserSync.stream({ match: fileExt.image }));
   });
 
   // And The Imagine
