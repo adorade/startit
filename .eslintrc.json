@@ -12,71 +12,22 @@
         "allowImportExportEverywhere": false,
         "codeFrame": false
     },
-    "globals": {
-        "DocumentFragment": true,
-        "expect": true,
-        "it": true,
-        "describe": true,
-        "beforeEach": true,
-        "runs": true,
-        "spyOn": true,
-        "spyOnEvent": true,
-        "waitsFor": true,
-        "afterEach": true
-    },
     "rules": {
         "block-spacing": "error",
         "comma-dangle": "error",
-        "comma-style": "error",
-        "indent": [
-            "error",
-            2,
+        "comma-style": ["error", "last"],
+        "indent": ["error", 2,
             {
-                "VariableDeclarator": {
-                    "var": 2,
-                    "let": 2,
-                    "const": 3
-                },
+                "VariableDeclarator": {"var": 2, "let": 2, "const": 3},
                 "SwitchCase": 1
             }
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "linebreak-style": ["error", "unix"],
         "no-floating-decimal": "error",
-        "no-multiple-empty-lines": [
-            "error",
-            {
-                "max": 2,
-                "maxEOF": 1,
-                "maxBOF": 1
-            }
-        ],
-        "no-unused-vars": [
-            "error",
-            {
-                "vars": "local",
-                "args": "none"
-            }
-        ],
+        "no-multiple-empty-lines": ["error", {"max": 2, "maxEOF": 1, "maxBOF": 1}],
         "no-trailing-spaces": "error",
-        "quotes": [
-            "error",
-            "single",
-            {
-                "avoidEscape": true
-            }
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "camelcase": [
-            "error",
-            {
-                "properties": "never"
-            }
-        ]
+        "quotes": ["error", "single", {"avoidEscape": true}],
+        "semi": ["error", "always"],
+        "camelcase": ["error", {"properties": "never"}]
     }
 }
