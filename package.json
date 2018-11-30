@@ -1,21 +1,21 @@
 {
-  "name": "uni-starter",
+  "name": "startit",
   "version": "1.0.0",
   "description": "Simple framework enabling faster delivery of projects and/or automatic deployment of GitHub pages.",
   "author": "Adorade",
   "keywords": [
     "unikorn",
-    "starter",
+    "startit",
     "pug"
   ],
   "main": "index.js",
-  "homepage": "https://github.com/adorade/uni-starter#readme",
+  "homepage": "https://github.com/adorade/startit#readme",
   "bugs": {
-    "url": "https://github.com/adorade/uni-starter/issues"
+    "url": "https://github.com/adorade/startit/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adorade/uni-starter.git"
+    "url": "git+https://github.com/adorade/startit.git"
   },
   "scripts": {
     "dev": "gulp dev",

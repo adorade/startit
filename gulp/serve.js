@@ -1,5 +1,5 @@
 /*!
- * Uni-Starter (v1.0.0): serve.js
+ * StartIt (v1.0.0): serve.js
  * Copyright (c) 2017 - 2018 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================= */
@@ -30,7 +30,7 @@ const serve = ({
         server: {
           baseDir: taskTarget
         },
-        logPrefix: 'Uni-Starter',
+        logPrefix: 'StartIt',
         port: 1234,
         ui: false
       });

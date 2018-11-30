@@ -1,5 +1,5 @@
 /*!
- * Uni-Starter (v1.0.0): font.js
+ * StartIt (v1.0.0): font.js
  * Copyright (c) 2017 - 2018 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================= */
