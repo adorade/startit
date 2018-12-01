@@ -4,13 +4,5 @@
   ],
   "plugins": [
     "add-module-exports"
-  ],
-  "env": {
-    "development": {
-      "plugins": []
-    },
-    "production": {
-      "plugins": []
-    }
-  }
+  ]
 }
