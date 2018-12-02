@@ -6,7 +6,10 @@
  */
 
  const presets = [
-  '@babel/env'
+  ['@babel/env', {
+    modules: 'auto',
+    loose: true
+  }]
 ];
 const plugins = [
   'add-module-exports'
