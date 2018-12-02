@@ -2,7 +2,6 @@
 node_modules
 tmp
 build
-logs
 .extra
 
 # To do Tasks
