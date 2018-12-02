@@ -12,7 +12,6 @@ import { watchEvent } from './util/handler';
 // Automatically reload assets or refresh your browser when changes occur
 const serve = ({
   gulp,
-  plugins,
   args,
   config,
   browserSync,

@@ -8,7 +8,6 @@
 // Copy static files
 const statics = ({
   gulp,
-  plugins,
   args,
   config,
   taskTarget,

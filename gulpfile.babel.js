@@ -9,7 +9,7 @@
  * This gulpfile makes use of new JavaScript features.
  * Babel handles this without us having to do anything. It just works.
  * You can read more about the new JavaScript features here:
- *    https://babeljs.io/docs/learn-es2015/
+ *    https://babeljs.io/docs/en/learn
  */
 
 import gulp from 'gulp';
@@ -19,7 +19,6 @@ import minimist from 'minimist';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 // Import project configuration as configs
-// import { dirs, paths, options } from './gulp/util/config';
 import * as configs from './gulp/util/config';
 
 const config = Object.assign({}, configs);
@@ -33,8 +32,7 @@ const plugins = gulpLoadPlugins({
   // Useful for bug reporting and issue debugging
   DEBUG: false,
   rename: {
-    'gulp-pug-linter': 'pugLinter',
-    'gulp-changed-in-place': 'changedInPlace'
+    'gulp-pug-linter': 'pugLinter'
   }
 });
 

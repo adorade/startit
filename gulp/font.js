@@ -8,7 +8,6 @@
 // Copy font files
 const font = ({
   gulp,
-  plugins,
   args,
   config,
   taskTarget,
