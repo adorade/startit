@@ -8,7 +8,7 @@ const dirs = {
   root: './',
   src: 'src',
   dev: 'tmp',
-  prod: 'build',
+  prod: 'dist',
   test: 'test',
   ghpages: '.publish'
 };
@@ -53,9 +53,6 @@ const paths = {
 };
 
 const options = {
-  render: {
-    sourceFileChange: false
-  },
   entry: {
     cssExternal: 'style**.{scss,sass}',
     cssInline: 'inline**.{scss,sass}',

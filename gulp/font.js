@@ -5,6 +5,8 @@
  * ========================================================================= */
 'use strict';
 
+import { debugInfo } from './util/handler';
+
 // Copy font files
 const font = ({
   gulp,
@@ -25,6 +27,7 @@ const font = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('font')
       })
+      .pipe(debugInfo({ title: 'Copy fonts:' }))
       .pipe(gulp.dest(dest))
       .pipe(browserSync.stream({ match: fileExt.font }));
   });

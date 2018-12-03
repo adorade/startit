@@ -5,6 +5,8 @@
  * ========================================================================= */
 'use strict';
 
+import { debugInfo } from './util/handler';
+
 // Copy static files
 const statics = ({
   gulp,
@@ -25,6 +27,7 @@ const statics = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('static')
       })
+      .pipe(debugInfo({ title: 'Copy static:' }))
       .pipe(gulp.dest(dest))
       .pipe(browserSync.stream({ match: fileExt.static }));
   });

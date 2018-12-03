@@ -5,6 +5,8 @@
  * ========================================================================= */
 'use strict';
 
+import { debugInfo } from './util/handler';
+
 // Deploy files to Github Pages
 const deploy = ({
   gulp,
@@ -17,6 +19,7 @@ const deploy = ({
   gulp.task('deploy', () => {
     return gulp
       .src(dir.prod + fileExt.deploy)
+      .pipe(debugInfo({ title: 'GitHub Pages:' }))
       .pipe(plugins.ghPages());
   });
 };

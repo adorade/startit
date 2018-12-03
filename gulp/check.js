@@ -5,7 +5,7 @@
  * ========================================================================= */
 'use strict';
 
-// For fancy log, colors, beep in console
+// For fancy log and colors in console
 import log from 'fancy-log';
 import { green, magenta } from 'ansi-colors';
 
