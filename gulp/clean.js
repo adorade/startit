@@ -24,6 +24,11 @@ const clean = ({
     return del(dir.prod);
   });
 
+  // Clean logs folder
+  gulp.task('clean:logs', () => {
+    return del(dir.logs);
+  });
+
   // Clean GitHub pages output folder
   gulp.task('clean:ghpages', () => {
     return del(dir.ghpages);
@@ -33,6 +38,7 @@ const clean = ({
   const cleaner = gulp.series(
     'clean:development',
     'clean:production',
+    'clean:logs',
     'clean:ghpages'
   );
   gulp.task('cleaner', cleaner);
