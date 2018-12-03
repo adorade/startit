@@ -16,7 +16,7 @@ const statics = ({
   browserSync
 }) => {
   const paths = config.paths;
-  const fileExt = config.options.fileExt;
+  const fileExt = config.fileExt;
 
   taskTarget = args.production ? paths.static.prod : paths.static.dev;
   const dest = taskTarget;

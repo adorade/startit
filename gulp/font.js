@@ -16,7 +16,7 @@ const font = ({
   browserSync
 }) => {
   const paths = config.paths;
-  const fileExt = config.options.fileExt;
+  const fileExt = config.fileExt;
 
   taskTarget = args.production ? paths.fonts.prod : paths.fonts.dev;
   const dest = taskTarget;

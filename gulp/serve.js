@@ -18,7 +18,7 @@ const serve = ({
   taskTarget
 }) => {
   const paths = config.paths;
-  const fileExt = config.options.fileExt;
+  const fileExt = config.fileExt;
   const optsWatch = config.options.watch;
 
   // Gulp serve task

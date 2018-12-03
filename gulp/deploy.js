@@ -14,7 +14,7 @@ const deploy = ({
   config
 }) => {
   const dir = config.dirs;
-  const fileExt = config.options.fileExt;
+  const fileExt = config.fileExt;
 
   gulp.task('deploy', () => {
     return gulp

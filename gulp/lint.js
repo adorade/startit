@@ -16,7 +16,7 @@ const lint = ({
   config
 }) => {
   const paths = config.paths;
-  const fileExt = config.options.fileExt;
+  const fileExt = config.fileExt;
 
   // lint *.scss sources files
   gulp.task('lint:style', () => {

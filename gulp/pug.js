@@ -21,7 +21,7 @@ const pug = ({
 }) => {
   const paths = config.paths;
   const entry = config.options.entry;
-  const fileExt = config.options.fileExt;
+  const fileExt = config.fileExt;
 
   if (args.production) {
     entry.css.inline = true;

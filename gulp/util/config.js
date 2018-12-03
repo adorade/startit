@@ -52,6 +52,22 @@ const paths = {
   }
 };
 
+const fileExt = {
+  script: '**/*.es6',
+  style: '**/*.scss',
+  font: '**/*.{otf,eot,svg,ttf,woff,woff2}',
+  image: '**/*.{jpg,jpeg,gif,svg,png}',
+  webp: '**/*.{jpg,jpeg,png,webp}',
+  pug: '**/*.pug',
+  data: '**/*.json',
+  docs: '**/*.md',
+  static: '**/*.{doc,docx,zip,pdf,js,json,xml}',
+  deploy: '**/*',
+  css: '**/*.css',
+  js: '**/*.js',
+  html: '**/*.html'
+};
+
 const options = {
   entry: {
     cssExternal: 'style**.{scss,sass}',
@@ -60,21 +76,6 @@ const options = {
       inline: true,
       external: false
     }
-  },
-  fileExt: {
-    script: '**/*.es6',
-    style: '**/*.scss',
-    font: '**/*.{otf,eot,svg,ttf,woff,woff2}',
-    image: '**/*.{jpg,jpeg,gif,svg,png}',
-    webp: '**/*.{jpg,jpeg,png,webp}',
-    pug: '**/*.pug',
-    data: '**/*.json',
-    docs: '**/*.md',
-    static: '**/*.{doc,docx,zip,pdf,js,json,xml}',
-    deploy: '**/*',
-    css: '**/*.css',
-    js: '**/*.js',
-    html: '**/*.html'
   },
   watch: {
     interval: 1000, // default 100
@@ -85,5 +86,6 @@ const options = {
 export {
   dirs,
   paths,
+  fileExt,
   options
 };

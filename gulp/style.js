@@ -20,7 +20,7 @@ const style = ({
 }) => {
   const paths = config.paths;
   const entry = config.options.entry;
-  const fileExt = config.options.fileExt;
+  const fileExt = config.fileExt;
   const cssPath = [];
 
   taskTarget = args.production ? paths.styles.prod : paths.styles.dev;

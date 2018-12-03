@@ -17,7 +17,7 @@ const scripts = ({
   browserSync
 }) => {
   const paths = config.paths;
-  const fileExt = config.options.fileExt;
+  const fileExt = config.fileExt;
 
   taskTarget = args.production ? paths.scripts.prod : paths.scripts.dev;
   const dest = taskTarget;
