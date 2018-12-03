@@ -5,7 +5,7 @@
  * ========================================================================= */
 'use strict';
 
-// import fs from 'fs';
+import fs from 'fs';
 // import log from 'fancy-log';
 import { debugInfo } from './util/handler';
 
@@ -41,7 +41,9 @@ const lint = ({
 
   // lint *.es6 sources files
   gulp.task('lint:script', () => {
-    // const output = fs.createWriteStream('logs/gulp/scripts.txt');
+    const outputDir = 'logs/gulp';
+    fs.mkdirSync(`${outputDir}`, { recursive: true });
+    const output = fs.createWriteStream( `${outputDir}/scripts.txt` );
 
     return gulp
       .src(paths.scripts.src + fileExt.script, {
@@ -49,11 +51,8 @@ const lint = ({
         since: gulp.lastRun('lint:script')
       })
       .pipe(debugInfo({ title: 'Lint script:' }))
-      .pipe(plugins.eslint({
-        // fix: true
-      }))
-      .pipe(plugins.eslint.format())
-      // .pipe(plugins.eslint.format('stylish', output))
+      .pipe(plugins.eslint())
+      .pipe(plugins.eslint.format('stylish', output))
       .pipe(plugins.eslint.failAfterError());
   });
 
