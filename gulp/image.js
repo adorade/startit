@@ -18,6 +18,7 @@ const image = ({
 }) => {
   const paths = config.paths;
   const fileExt = config.fileExt;
+  const opts = config.options;
 
   taskTarget = args.production ? paths.images.prod : paths.images.dev;
   const dest = taskTarget;
@@ -29,11 +30,12 @@ const image = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('image')
       })
+      .pipe(debugInfo({ title: 'Optimize image:' }))
       .pipe(plugins.imagemin([
-        plugins.imagemin.gifsicle({ interlaced: true }),
-        plugins.imagemin.jpegtran({ progressive: true, max: 85 }),
-        plugins.imagemin.optipng({ optimizationLevel: 5 }),
-        plugins.imagemin.svgo({ plugins: [{ removeViewBox: true }] })
+        plugins.imagemin.gifsicle(opts.images.gif),
+        plugins.imagemin.jpegtran(opts.images.jpeg),
+        plugins.imagemin.optipng(opts.images.png),
+        plugins.imagemin.svgo(opts.images.svg)
       ]))
       .pipe(gulp.dest(dest))
       .pipe(browserSync.stream({ match: fileExt.image }));
@@ -46,11 +48,8 @@ const image = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('convert')
       })
-      .pipe(debugInfo({ title: 'Convert image:' }))
-      .pipe(plugins.webp({
-        preset: 'default',
-        quality: 65
-      }))
+      .pipe(plugins.webp(opts.images.webp))
+      .pipe(debugInfo({ title: 'Converted image:' }))
       .pipe(gulp.dest(dest))
       .pipe(browserSync.stream({ match: fileExt.image }));
   });

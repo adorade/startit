@@ -6,7 +6,6 @@
 'use strict';
 
 import fs from 'fs';
-// import log from 'fancy-log';
 import { debugInfo } from './util/handler';
 
 // Code linting and validation
@@ -17,6 +16,7 @@ const lint = ({
 }) => {
   const paths = config.paths;
   const fileExt = config.fileExt;
+  const opts = config.options;
 
   // lint *.scss sources files
   gulp.task('lint:style', () => {
@@ -26,17 +26,7 @@ const lint = ({
         since: gulp.lastRun('lint:style')
       })
       .pipe(debugInfo({ title: 'Lint style:' }))
-      .pipe(plugins.stylelint({
-        failAfterError: true,
-        reportOutputDir: 'logs/gulp',
-        reporters: [{
-          formatter: 'string',
-          save: 'styles.txt',
-          console: true
-        }],
-        // fix: true,
-        syntax: 'scss'
-      }));
+      .pipe(plugins.stylelint(opts.styles));
   });
 
   // lint *.es6 sources files

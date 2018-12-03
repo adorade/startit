@@ -19,7 +19,7 @@ const serve = ({
 }) => {
   const paths = config.paths;
   const fileExt = config.fileExt;
-  const optsWatch = config.options.watch;
+  const opts = config.options;
 
   // Gulp serve task
   gulp.task('serve', () => {
@@ -80,7 +80,7 @@ const serve = ({
         }
 
         gulp.watch(
-          watcher.paths, optsWatch, gulp.series(watcher.tasks)
+          watcher.paths, opts.watch, gulp.series(watcher.tasks)
         )
           // https://github.com/paulmillr/chokidar#getting-started
           .on('all', (event, path) => {

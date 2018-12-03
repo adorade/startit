@@ -19,22 +19,22 @@ const style = ({
   browserSync
 }) => {
   const paths = config.paths;
-  const entry = config.options.entry;
   const fileExt = config.fileExt;
+  const opts = config.options;
   const cssPath = [];
 
   taskTarget = args.production ? paths.styles.prod : paths.styles.dev;
 
   if (args.production) {
-    entry.css.inline = true;
-    entry.css.external = false;
+    opts.entry.css.inline = true;
+    opts.entry.css.external = false;
   }
 
-  if (entry.css.external) {
-    cssPath.push(paths.styles.src + entry.cssExternal);
+  if (opts.entry.css.external) {
+    cssPath.push(paths.styles.src + opts.entry.cssExternal);
   }
-  if (entry.css.inline) {
-    cssPath.push(paths.styles.src + entry.cssInline);
+  if (opts.entry.css.inline) {
+    cssPath.push(paths.styles.src + opts.entry.cssInline);
   }
 
   gulp.task('style', gulp.series('lint:style', () => {
@@ -47,8 +47,7 @@ const style = ({
       .pipe(debugInfo({ title: 'Compile:' }))
       .pipe(plugins.sass({
         outputStyle: args.production ? 'compressed' : 'expanded',
-        precision: 10,
-        sync: true
+        precision: 6
       }))
       .on('error', function(err) {
         plugins.sass.logError;
@@ -57,16 +56,7 @@ const style = ({
         this.emit('end');
       })
       .pipe(plugins.cached('sass_compile'))
-      .pipe(plugins.autoprefixer({
-        browsers: [
-          'last 2 version',
-          '> 5%',
-          'safari 5',
-          'ios 6',
-          'android 4'
-        ],
-        cascade: false
-      }))
+      .pipe(plugins.autoprefixer(opts.autoprefixer))
       .pipe(gulp.dest(taskTarget, { sourcemaps: './' }))
       .pipe(browserSync.stream({match: fileExt.css }));
   }));

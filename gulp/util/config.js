@@ -9,6 +9,7 @@ const dirs = {
   src: 'src',
   dev: 'tmp',
   prod: 'dist',
+  logs: 'logs',
   test: 'test',
   ghpages: '.publish'
 };
@@ -77,9 +78,41 @@ const options = {
       external: false
     }
   },
+  styles: {
+    failAfterError: false,
+    reportOutputDir: `${dirs.logs}/gulp`,
+    reporters: [
+      { formatter: 'string', console: true, save: 'styles.txt' }
+    ],
+    syntax: 'scss'
+  },
+  sass: {
+    outputStyle: 'expanded',
+    precision: 6
+  },
+  autoprefixer: {
+    // browsers: [], // see .browserslistrc
+    cascade: false
+  },
+  eslint: {
+    // see .eslintrc.json
+  },
+  babel: {
+    // see .babelrc.js
+    comments: false
+  },
+  images: {
+    gif: { interlaced: true },
+    jpeg: { progressive: true },
+    png: { optimizationLevel: 4 },
+    svg: { plugins: [{ removeViewBox: true }] },
+    webp: { // https://github.com/imagemin/imagemin-webp#options
+      preset: 'default',
+      quality: 60
+    }
+  },
   watch: {
-    interval: 1000, // default 100
-    awaitWriteFinish: true // default false
+    delay: 2000
   }
 };
 

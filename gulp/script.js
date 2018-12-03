@@ -18,6 +18,7 @@ const scripts = ({
 }) => {
   const paths = config.paths;
   const fileExt = config.fileExt;
+  const opts = config.options;
 
   taskTarget = args.production ? paths.scripts.prod : paths.scripts.dev;
   const dest = taskTarget;
@@ -30,7 +31,7 @@ const scripts = ({
         since: gulp.lastRun('script')
       })
       .pipe(debugInfo({ title: 'Transpile:' }))
-      .pipe(plugins.babel())
+      .pipe(plugins.babel(opts.babel))
       .pipe(gulp.dest(dest, { sourcemaps: './' }))
       .pipe(browserSync.stream({ match: fileExt.js }));
   }));
