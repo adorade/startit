@@ -20,6 +20,7 @@ const check = ({
     log(green('Gulp Tasks:\n'), gulpTree.nodes);
     log(magenta('Directories configuration:\n'), config.dirs);
     log(magenta('Paths configuration:\n'), config.paths);
+    log(magenta('Files extensions:\n'), config.fileExt);
     log(magenta('Options configuration:\n'), config.options);
     log(magenta('Task Target:'), taskTarget);
     done();
