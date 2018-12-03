@@ -16,12 +16,12 @@ const deploy = ({
   const dir = config.dirs;
   const fileExt = config.fileExt;
 
-  gulp.task('deploy', () => {
+  gulp.task('deploy', gulp.series('clean:ghpages', () => {
     return gulp
       .src(dir.prod + fileExt.deploy)
       .pipe(debugInfo({ title: 'GitHub Pages:' }))
       .pipe(plugins.ghPages());
-  });
+  }));
 };
 
 export default deploy;
