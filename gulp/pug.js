@@ -6,8 +6,7 @@
 'use strict';
 
 import fs from 'fs';
-import log from 'fancy-log';
-import { getJsonData, printError } from './util/util';
+import { getJsonData } from './util/util';
 import { debugInfo } from './util/handler';
 
 // Generating HTML from templates and content files
@@ -44,7 +43,6 @@ const pug = ({
         // since: gulp.lastRun('pug')
       })
       .pipe(debugInfo({ title: 'Pug files:' }))
-      // compile pug to html
       .pipe(plugins.pug({
         // compress if in production
         pretty: args.production ? false: true,
@@ -57,11 +55,6 @@ const pug = ({
           inlinePath
         }
       }))
-      .on('error', function(err) {
-        log.error(err);
-        browserSync.notify(printError(err), 25000);
-        this.emit('end');
-      })
       .pipe(plugins.cached('pug_compile'))
       // Check if inline.css exists and use inlineSource to inject it
       .pipe(plugins.if(

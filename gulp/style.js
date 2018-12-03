@@ -5,8 +5,6 @@
  * ========================================================================= */
 'use strict';
 
-import log from 'fancy-log';
-import { printError } from './util/util';
 import { debugInfo } from './util/handler';
 
 // Compiling Sass to CSS code
@@ -49,12 +47,7 @@ const style = ({
         outputStyle: args.production ? 'compressed' : 'expanded',
         precision: 6
       }))
-      .on('error', function(err) {
-        plugins.sass.logError;
-        browserSync.notify(printError(err), 25000);
-        log.error(err);
-        this.emit('end');
-      })
+      .on('error', plugins.sass.logError)
       .pipe(plugins.cached('sass_compile'))
       .pipe(plugins.autoprefixer(opts.autoprefixer))
       .pipe(gulp.dest(taskTarget, { sourcemaps: './' }))

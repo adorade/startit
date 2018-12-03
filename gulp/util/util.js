@@ -31,9 +31,6 @@ const getJsonData = obj => {
   }
 };
 
-const printError = error => `<h1 style="color:#c00">Error</h1><pre style="text-align:left">${error.message}</pre>`;
-
 export {
-  getJsonData,
-  printError
+  getJsonData
 };
