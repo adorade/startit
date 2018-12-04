@@ -56,11 +56,11 @@ const cleanTask = args.production ? 'clean:production' : 'clean:development';
 
 // Basic tasks
 const basic = [
+  'style',
+  'script',
+  'imagine',
   'font',
   'static',
-  'imagine',
-  'script',
-  'style',
   'pug'
 ];
 

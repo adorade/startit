@@ -94,6 +94,10 @@ const options = {
     // browsers: [], // see .browserslistrc
     cascade: false
   },
+  csso: {
+    restructure: false,
+    comments: false
+  },
   eslint: {
     // see .eslintrc.json
   },

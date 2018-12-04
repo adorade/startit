@@ -43,13 +43,11 @@ const style = ({
         // since: gulp.lastRun('style')
       })
       .pipe(debugInfo({ title: 'Compile:' }))
-      .pipe(plugins.sass({
-        outputStyle: args.production ? 'compressed' : 'expanded',
-        precision: 6
-      }))
-      .on('error', plugins.sass.logError)
+      .pipe(plugins.sass(opts.sass)).on('error', plugins.sass.logError)
       .pipe(plugins.cached('sass_compile'))
       .pipe(plugins.autoprefixer(opts.autoprefixer))
+      .pipe(plugins.if(args.production, plugins.csso(opts.csso)))
+      .pipe(plugins.if(args.production, plugins.rename({ extname: '.min.css' })))
       .pipe(gulp.dest(taskTarget, { sourcemaps: './' }))
       .pipe(browserSync.stream({match: fileExt.css }));
   }));
