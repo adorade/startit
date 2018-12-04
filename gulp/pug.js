@@ -21,6 +21,7 @@ const pug = ({
   const paths = config.paths;
   const entry = config.options.entry;
   const fileExt = config.fileExt;
+  const opts = config.options;
 
   if (args.production) {
     entry.css.inline = true;
@@ -45,7 +46,7 @@ const pug = ({
       .pipe(debugInfo({ title: 'Pug files:' }))
       .pipe(plugins.pug({
         // compress if in production
-        pretty: args.production ? false: true,
+        pretty: true,
         // Make data available to pug
         locals: {
           config,
@@ -63,6 +64,7 @@ const pug = ({
           rootpath: './'
         })
       ))
+      .pipe(plugins.if(args.production, plugins.htmlmin(opts.htmlmin)))
       .pipe(debugInfo({ title: 'Dest:' }))
       .pipe(gulp.dest(taskTarget))
       .pipe(browserSync.stream({ match: fileExt.html }));
