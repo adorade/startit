@@ -22,7 +22,7 @@ const serve = ({
   const opts = config.options;
 
   // Gulp serve task
-  gulp.task('serve', () => {
+  gulp.task('serve', (done) => {
     if (!args.production) {
       // Serve files from the 'tmp' directory of this project
       browserSync.init({
@@ -89,6 +89,7 @@ const serve = ({
           });
       }
     }
+    done();
   });
 };
 
