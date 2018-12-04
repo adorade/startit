@@ -105,6 +105,9 @@ const options = {
     // see .babelrc.js
     comments: false
   },
+  uglify: {
+    // option here
+  },
   images: {
     gif: { interlaced: true },
     jpeg: { progressive: true },

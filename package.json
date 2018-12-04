@@ -53,6 +53,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-stylelint": "^8.0.0",
+    "gulp-uglify": "^3.0.1",
     "gulp-webp": "^3.0.0",
     "jstransformer-markdown-it": "^2.1.0",
     "jstransformer-remarkable": "^1.2.0",
