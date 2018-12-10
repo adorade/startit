@@ -1,20 +1,19 @@
-/* eslint-env mocha */
-var assert = require('chai').assert;
-var pathToUrl = require('./pathToUrl');
+/* eslint-env jest */
+const pathToUrl = require('./pathToUrl');
 
-describe('pathToUrl', function() {
-  it('converts Windows paths to a url path', function() {
-    var urlPath = pathToUrl('\\Foo\\bar\\baz');
-    assert.equal(urlPath, '/Foo/bar/baz');
+describe('pathToUrl', () => {
+  it('converts Windows paths to a url path', () => {
+    const urlPath = pathToUrl('\\Foo\\bar\\baz');
+    expect(urlPath).toMatch('/Foo/bar/baz');
   });
 
-  it('does not affect unix paths', function() {
-    var unixPath = pathToUrl('/Foo/bar/baz/');
-    assert.equal(unixPath, '/Foo/bar/baz/');
+  it('does not affect unix paths', () => {
+    const unixPath = pathToUrl('/Foo/bar/baz/');
+    expect(unixPath).toMatch('/Foo/bar/baz/');
   });
 
-  it('normalizes path segments', function() {
-    var joinedPath = pathToUrl('/','//Foo', 'bar', 'baz/');
-    assert.equal(joinedPath, '/Foo/bar/baz/');
+  it('normalizes path segments', () => {
+    const joinedPath = pathToUrl('/','//Foo', 'bar', 'baz/');
+    expect(joinedPath).toMatch('/Foo/bar/baz/');
   });
 });
