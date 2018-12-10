@@ -24,4 +24,6 @@ before_script:
   - yarn global add gulp-cli
   - node -v && npm -v && yarn -v && git --version && gulp -v
 
-script: gulp build --production
+script:
+  - yarn run test
+  - yarn run build
