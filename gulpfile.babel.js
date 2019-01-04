@@ -19,7 +19,7 @@ import minimist from 'minimist';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 // Import project configuration as configs
-import * as configs from './gulp/util/config';
+import * as configs from './tasks/util/config';
 
 const config = Object.assign({}, configs);
 const args = minimist(process.argv.slice(2));
@@ -39,10 +39,10 @@ const plugins = gulpLoadPlugins({
 // Create a new browserSync instance
 const browserSync = browserSyncLib.create();
 
-// Read all files from the gulp folder and load all gulp tasks
-fs.readdirSync('./gulp')
+// Read all files from the `tasks` folder and load all gulp tasks
+fs.readdirSync('./tasks')
   .filter(fileName => /\.(js)$/i.test(fileName))
-  .map(fileName => require(`./gulp/${fileName}`)({
+  .map(fileName => require(`./tasks/${fileName}`)({
     gulp,
     config,
     args,
