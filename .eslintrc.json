@@ -32,7 +32,7 @@
     },
     "overrides": [
         {
-            "files": ["gulpfile.js", "gulp/**/*.js"],
+            "files": ["gulpfile.babel.js", "gulp/**/*.js"],
             "rules": {
                 "semi": ["error", "always"]
             }
