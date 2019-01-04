@@ -32,9 +32,22 @@
     },
     "overrides": [
         {
-            "files": ["gulpfile.babel.js", "gulp/**/*.js"],
+            "files": [
+                "gulpfile.babel.js",
+                "gulp/**/*.js",
+                "jest.config.js"
+            ],
             "rules": {
                 "semi": ["error", "always"]
+            }
+        },
+        {
+            "files": [
+                "jest.config.js"
+            ],
+            "rules": {
+                "comma-dangle": "off",
+                "quotes": ["error", "double"]
             }
         }
     ]
