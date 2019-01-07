@@ -5,7 +5,7 @@
  * ============================================================================
  */
 
- const presets = [
+const presets = [
   ['@babel/env', {
     modules: 'auto',
     loose: true
