@@ -9,6 +9,6 @@
 
 ## Description
 
-StartIt is a simple framework enabling faster delivery of projects and/or automatic deployment of GitHub pages..
+> ✔ StartIt is a simple framework enabling faster delivery of projects and/or automatic deployment of GitHub pages..
 
 Work in progress
