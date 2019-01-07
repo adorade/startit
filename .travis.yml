@@ -1,6 +1,7 @@
 #
 # Startit (v1.0.0): .travis.yml
 # Copyright (c) 2019 Adorade. All Rights Reserved.
+# Licensed under MIT
 #
 # Travis continuous integration system configuration file.
 # Overview on how to customize the configuration is located at:
