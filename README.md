@@ -1,6 +1,7 @@
-[![GitHub package version](https://img.shields.io/github/package-json/v/adorade/startit.svg?logo=github&style=flat-square)](https://github.com/adorade/startit/blob/master/package.json)
+<!-- [![GitHub package version](https://img.shields.io/github/package-json/v/adorade/startit.svg?logo=github&style=flat-square)](https://github.com/adorade/startit/blob/master/package.json) -->
 [![license](https://img.shields.io/github/license/adorade/startit.svg?longCache=true&style=flat-square)](https://mit-license.org)
 [![devDependencies Status](https://img.shields.io/david/dev/adorade/startit.svg?longCache=true&style=flat-square)](https://david-dm.org/adorade/startit?type=dev)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/adorade/startit/issues)
 [![Travis (.org) branch](https://img.shields.io/travis/adorade/startit/master.svg?logo=travis&style=flat-square)](https://travis-ci.org/adorade/startit)
 [![Greenkeeper badge](https://badges.greenkeeper.io/adorade/startit.svg?style=flat-square)](https://greenkeeper.io/)
 
