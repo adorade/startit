@@ -1,4 +1,4 @@
-<!-- [![GitHub package version](https://img.shields.io/github/package-json/v/adorade/startit.svg?logo=github&style=flat-square)](https://github.com/adorade/startit/blob/master/package.json) -->
+[![GitHub package version](https://img.shields.io/github/package-json/v/adorade/startit.svg?color=green&logo=github&style=flat-square)](https://github.com/adorade/startit/blob/master/package.json)
 [![license](https://img.shields.io/github/license/adorade/startit.svg?longCache=true&style=flat-square)](https://mit-license.org)
 [![devDependencies Status](https://img.shields.io/david/dev/adorade/startit.svg?longCache=true&style=flat-square)](https://david-dm.org/adorade/startit?type=dev)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/adorade/startit/issues)
