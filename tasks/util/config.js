@@ -133,7 +133,7 @@ const options = {
     minifyJS: true,
     removeAttributeQuotes: true,
     removeComments: true,
-    removeEmptyAttributes: true,
+    // removeEmptyAttributes: true,
     removeEmptyElements: true,
     removeRedundantAttributes: true,
     removeScriptTypeAttributes: true,
