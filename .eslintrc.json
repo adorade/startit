@@ -34,7 +34,7 @@
         {
             "files": [
                 "gulpfile.babel.js",
-                "gulp/**/*.js",
+                "tasks/**/*.js",
                 "jest.config.js"
             ],
             "rules": {
