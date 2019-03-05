@@ -31,7 +31,7 @@ const lint = ({
 
   // lint *.es6 sources files
   gulp.task('lint:script', () => {
-    const outputDir = 'logs/gulp';
+    const outputDir = paths.logs.gulp;
     fs.mkdirSync(`${outputDir}`, { recursive: true });
     const output = fs.createWriteStream( `${outputDir}/scripts.txt` );
 

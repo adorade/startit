@@ -50,6 +50,9 @@ const paths = {
   },
   docs: {
     src: `${dirs.src}/docs/`
+  },
+  logs: {
+    gulp: `${dirs.logs}/gulp/`
   }
 };
 
