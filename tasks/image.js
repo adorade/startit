@@ -48,8 +48,8 @@ const image = ({
         // Only deal with files that change in the pipeline
         since: gulp.lastRun('convert')
       })
-      .pipe(plugins.webp(opts.images.webp))
       .pipe(debugInfo({ title: 'Converted image:' }))
+      .pipe(plugins.webp(opts.images.webp))
       .pipe(gulp.dest(dest))
       .pipe(browserSync.stream({ match: fileExt.image }));
   });

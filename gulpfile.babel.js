@@ -42,6 +42,7 @@ const browserSync = browserSyncLib.create();
 // Read all files from the `tasks` folder and load all gulp tasks
 fs.readdirSync('./tasks')
   .filter(fileName => /\.(js)$/i.test(fileName))
+  // .map(fileName => fileName.split('.').reduce(a=>a)());
   .map(fileName => require(`./tasks/${fileName}`)({
     gulp,
     config,
