@@ -10,7 +10,7 @@ import log from 'fancy-log';
 import { green, magenta } from 'ansi-colors';
 
 // Check gulp configuration
-const check = ({
+const checks = ({
   gulp,
   config,
   taskTarget
@@ -27,4 +27,4 @@ const check = ({
   });
 };
 
-export default check;
+export default checks;

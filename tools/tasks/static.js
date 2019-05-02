@@ -1,14 +1,14 @@
 /*!
- * StartIt (v1.0.0): font.js
+ * StartIt (v1.0.0): static.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================= */
 'use strict';
 
-import { debugInfo } from './util/handler';
+import { debugInfo } from '../util/handler';
 
-// Copy font files
-const font = ({
+// Copy static files
+const statics = ({
   gulp,
   args,
   config,
@@ -18,19 +18,19 @@ const font = ({
   const paths = config.paths;
   const fileExt = config.fileExt;
 
-  taskTarget = args.production ? paths.fonts.prod : paths.fonts.dev;
+  taskTarget = args.production ? paths.static.prod : paths.static.dev;
   const dest = taskTarget;
 
-  gulp.task('font', () => {
+  gulp.task('static', () => {
     return gulp
-      .src(paths.fonts.src + fileExt.font, {
+      .src(paths.static.src + fileExt.static, {
         // Only deal with files that change in the pipeline
-        since: gulp.lastRun('font')
+        since: gulp.lastRun('static')
       })
-      .pipe(debugInfo({ title: 'Copy fonts:' }))
+      .pipe(debugInfo({ title: 'Copy static:' }))
       .pipe(gulp.dest(dest))
-      .pipe(browserSync.stream({ match: fileExt.font }));
+      .pipe(browserSync.stream({ match: fileExt.static }));
   });
 };
 
-export default font;
+export default statics;

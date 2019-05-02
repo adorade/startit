@@ -6,8 +6,8 @@
 'use strict';
 
 import fs from 'fs';
-import { getJsonData } from './util/util';
-import { debugInfo } from './util/handler';
+import { getJsonData } from '../util/util';
+import { debugInfo } from '../util/handler';
 
 // Generating HTML from templates and content files
 const pug = ({

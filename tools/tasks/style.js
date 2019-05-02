@@ -5,7 +5,7 @@
  * ========================================================================= */
 'use strict';
 
-import { debugInfo } from './util/handler';
+import { debugInfo } from '../util/handler';
 
 // Compiling Sass to CSS code
 const style = ({

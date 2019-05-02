@@ -5,7 +5,7 @@
  * ========================================================================= */
 'use strict';
 
-import { debugInfo } from './util/handler';
+import { debugInfo } from '../util/handler';
 
 // Transpiling ES6 to cross-browser-compatible ES5 code
 const scripts = ({

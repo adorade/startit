@@ -6,7 +6,7 @@
 'use strict';
 
 import fs from 'fs';
-import { debugInfo } from './util/handler';
+import { debugInfo } from '../util/handler';
 
 // Code linting and validation
 const lint = ({

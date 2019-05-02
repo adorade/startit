@@ -19,7 +19,7 @@ import minimist from 'minimist';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 // Import project configuration as configs
-import * as configs from './tasks/util/config';
+import * as configs from './tools/util/config';
 
 const config = Object.assign({}, configs);
 const args = minimist(process.argv.slice(2));
@@ -40,10 +40,11 @@ const plugins = gulpLoadPlugins({
 const browserSync = browserSyncLib.create();
 
 // Read all files from the `tasks` folder and load all gulp tasks
-fs.readdirSync('./tasks')
+const tasksPath = './tools/tasks';
+fs.readdirSync(tasksPath)
   .filter(fileName => /\.(js)$/i.test(fileName))
   // .map(fileName => fileName.split('.').reduce(a=>a)());
-  .map(fileName => require(`./tasks/${fileName}`)({
+  .map(fileName => require(`${tasksPath}/${fileName}`)({
     gulp,
     config,
     args,
@@ -81,10 +82,10 @@ export const dev = gulp.series(
 dev.description = 'Development task with serve';
 
 // Check gulp configuration task
-export const check =  gulp.series(
+export const checks =  gulp.series(
   'settings'
 );
-check.description = 'Check gulp configuration';
+checks.description = 'Check gulp configuration';
 
 // Default gulp task
 export default dev;

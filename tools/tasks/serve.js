@@ -7,7 +7,7 @@
 
 import log from 'fancy-log';
 import { magenta, bgBlue, bgRed } from 'ansi-colors';
-import { watchEvent } from './util/handler';
+import { watchEvent } from '../util/handler';
 
 // Automatically reload assets or refresh your browser when changes occur
 const serve = ({
