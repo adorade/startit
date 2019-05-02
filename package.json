@@ -22,6 +22,7 @@
     "start": "gulp dev",
     "build": "gulp build --production",
     "deploy": "gulp build --production && gulp deploy && gulp clean:ghpages",
+    "release-version": "node tools/build/change-version.js",
     "test": "jest"
   },
   "dependencies": {},
@@ -60,6 +61,7 @@
     "jstransformer-markdown-it": "^2.1.0",
     "jstransformer-remarkable": "^1.2.0",
     "minimist": "^1.2.0",
+    "shelljs": "^0.8.3",
     "stylelint": "^10.0.1",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-order": "^3.0.0",
