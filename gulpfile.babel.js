@@ -21,6 +21,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 // Import project configuration and options
 import * as config from './tools/util/config';
 import { options as opts } from './tools/util/options';
+import { banner } from './tools/util/banner';
 
 const args = minimist(process.argv.slice(2));
 const dir = config.dirs;
@@ -48,6 +49,7 @@ fs.readdirSync(tasksPath)
     gulp,
     config,
     opts,
+    banner,
     args,
     taskTarget,
     plugins,

@@ -15,8 +15,8 @@ export const options = {
     cssExternal: 'style**.{scss,sass}',
     cssInline: 'inline**.{scss,sass}',
     css: {
-      inline: true,
-      external: false
+      inline: false,
+      external: true
     }
   },
   styles: {

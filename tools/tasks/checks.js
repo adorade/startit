@@ -14,6 +14,7 @@ const checks = ({
   gulp,
   config,
   opts,
+  banner,
   taskTarget
 }) => {
   gulp.task('settings', done => {
@@ -24,6 +25,7 @@ const checks = ({
     log(magenta('Files extensions:\n'), config.fileExt);
     log(magenta('Options configuration:\n'), opts);
     log(magenta('Task Target:'), taskTarget);
+    log(green('Banner:\n'), banner());
     done();
   });
 };

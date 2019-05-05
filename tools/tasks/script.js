@@ -14,6 +14,7 @@ const scripts = ({
   args,
   config,
   opts,
+  banner,
   taskTarget,
   browserSync
 }) => {
@@ -34,6 +35,7 @@ const scripts = ({
       .pipe(plugins.babel(opts.babel))
       .pipe(plugins.if(args.production, plugins.uglify(opts.uglify)))
       .pipe(plugins.if(args.production, plugins.rename({ extname: '.min.js' })))
+      .pipe(plugins.if(!args.production, plugins.header(banner())))
       .pipe(gulp.dest(dest, { sourcemaps: './' }))
       .pipe(browserSync.stream({ match: fileExt.js }));
   }));

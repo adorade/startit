@@ -14,6 +14,7 @@ const style = ({
   args,
   config,
   opts,
+  banner,
   taskTarget,
   browserSync
 }) => {
@@ -49,6 +50,7 @@ const style = ({
       .pipe(plugins.autoprefixer(opts.autoprefixer))
       .pipe(plugins.if(args.production, plugins.csso(opts.csso)))
       .pipe(plugins.if(args.production, plugins.rename({ extname: '.min.css' })))
+      .pipe(plugins.if(!args.production, plugins.header(banner())))
       .pipe(gulp.dest(taskTarget, { sourcemaps: './' }))
       .pipe(browserSync.stream({match: fileExt.css }));
   }));

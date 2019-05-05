@@ -49,6 +49,14 @@
                 "comma-dangle": "off",
                 "quotes": ["error", "double"]
             }
+        },
+        {
+            "files": [
+                "banner.js"
+            ],
+            "rules": {
+                "no-console": "off"
+            }
         }
     ]
 }
