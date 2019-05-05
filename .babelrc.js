@@ -16,5 +16,6 @@ const plugins = [
 ];
 
 module.exports = {
-  presets, plugins
+  presets, plugins,
+  comments: false
 };

@@ -44,7 +44,6 @@ export const options = {
   },
   babel: {
     // see .babelrc.js
-    comments: false
   },
   uglify: {
     compress: {
