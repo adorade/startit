@@ -6,6 +6,10 @@
 
 const { paths } = require('./config');
 
+const dates = new Date(
+  process.env.SOURCE_DATE_EPOCH ? process.env.SOURCE_DATE_EPOCH * 1000 : new Date().getTime()
+).toDateString();
+
 export const options = {
   entry: {
     cssExternal: 'style**.{scss,sass}',
@@ -72,6 +76,14 @@ export const options = {
     removeRedundantAttributes: true,
     removeScriptTypeAttributes: true,
     removeStyleLinkTypeAttributes: true
+  },
+  deploy: {
+    // remoteUrl: 'https://github.com/[your-username]/[your-project-name].git',
+    // branch: 'gh-pages',
+    // cacheDir: '.publish',
+    // push: true,
+    // force: false,
+    message: `Update ${dates}`
   },
   watch: {
     delay: 2000

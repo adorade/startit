@@ -11,7 +11,8 @@ import { debugInfo } from '../util/handler';
 const deploy = ({
   gulp,
   plugins,
-  config
+  config,
+  opts
 }) => {
   const dir = config.dirs;
   const fileExt = config.fileExt;
@@ -20,7 +21,7 @@ const deploy = ({
     return gulp
       .src(dir.prod + fileExt.deploy)
       .pipe(debugInfo({ title: 'GitHub Pages:' }))
-      .pipe(plugins.ghPages());
+      .pipe(plugins.ghPages(opts.deploy));
   }));
 };
 
