@@ -32,7 +32,7 @@ const scripts = ({
       })
       .pipe(debugInfo({ title: 'Transpile:' }))
       .pipe(plugins.babel(opts.babel))
-      .pipe(plugins.if(args.production, plugins.uglify()))
+      .pipe(plugins.if(args.production, plugins.uglify(opts.uglify)))
       .pipe(plugins.if(args.production, plugins.rename({ extname: '.min.js' })))
       .pipe(gulp.dest(dest, { sourcemaps: './' }))
       .pipe(browserSync.stream({ match: fileExt.js }));

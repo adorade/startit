@@ -47,7 +47,12 @@ export const options = {
     comments: false
   },
   uglify: {
-    // option here
+    compress: {
+      evaluate: false
+    },
+    mangle: {
+      keep_fnames: true
+    }
   },
   images: {
     gif: { interlaced: true },
