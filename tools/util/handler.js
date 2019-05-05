@@ -9,13 +9,13 @@ import log from 'fancy-log';
 import { blue, green, magenta, red  } from 'ansi-colors';
 import through from 'through2';
 
-const watchEvent = (path, event, task) => {
+export const watchEvent = (path, event, task) => {
   log(
     `File ${magenta(path)} was ${green(event)} running ${red(task)}`
   );
 };
 
-const debugInfo = options => {
+export const debugInfo = options => {
   options = Object.assign({
     title: 'Debug:',
     showFiles: true,
@@ -48,9 +48,4 @@ const debugInfo = options => {
     }
     cb(null, file);
   });
-};
-
-export {
-  watchEvent,
-  debugInfo
 };

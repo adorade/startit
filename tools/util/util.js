@@ -9,7 +9,7 @@ import fs from 'fs';
 import foldero from 'foldero';
 import log from 'fancy-log';
 
-const getJsonData = obj => {
+export const getJsonData = obj => {
   if (fs.existsSync(obj.dataPath)) {
     // Convert directory to a JavaScript Object
     return foldero(obj.dataPath, {
@@ -29,8 +29,4 @@ const getJsonData = obj => {
       }
     });
   }
-};
-
-export {
-  getJsonData
 };
