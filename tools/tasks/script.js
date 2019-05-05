@@ -13,12 +13,12 @@ const scripts = ({
   plugins,
   args,
   config,
+  opts,
   taskTarget,
   browserSync
 }) => {
   const paths = config.paths;
   const fileExt = config.fileExt;
-  const opts = config.options;
 
   taskTarget = args.production ? paths.scripts.prod : paths.scripts.dev;
   const dest = taskTarget;

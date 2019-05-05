@@ -18,10 +18,10 @@ import browserSyncLib from 'browser-sync';
 import minimist from 'minimist';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
-// Import project configuration as configs
-import * as configs from './tools/util/config';
+// Import project configuration and options
+import * as config from './tools/util/config';
+import { options as opts } from './tools/util/options';
 
-const config = Object.assign({}, configs);
 const args = minimist(process.argv.slice(2));
 const dir = config.dirs;
 const taskTarget = args.production ? dir.prod : dir.dev;
@@ -47,6 +47,7 @@ fs.readdirSync(tasksPath)
   .map(fileName => require(`${tasksPath}/${fileName}`)({
     gulp,
     config,
+    opts,
     args,
     taskTarget,
     plugins,

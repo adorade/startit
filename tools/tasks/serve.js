@@ -14,12 +14,12 @@ const serve = ({
   gulp,
   args,
   config,
+  opts,
   browserSync,
   taskTarget
 }) => {
   const paths = config.paths;
   const fileExt = config.fileExt;
-  const opts = config.options;
 
   // Gulp serve task
   gulp.task('serve', (done) => {

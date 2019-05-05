@@ -13,12 +13,12 @@ const image = ({
   plugins,
   args,
   config,
+  opts,
   taskTarget,
   browserSync
 }) => {
   const paths = config.paths;
   const fileExt = config.fileExt;
-  const opts = config.options;
 
   taskTarget = args.production ? paths.images.prod : paths.images.dev;
   const dest = taskTarget;

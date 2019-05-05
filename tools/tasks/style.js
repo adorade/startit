@@ -13,26 +13,27 @@ const style = ({
   plugins,
   args,
   config,
+  opts,
   taskTarget,
   browserSync
 }) => {
   const paths = config.paths;
   const fileExt = config.fileExt;
-  const opts = config.options;
+  const entry = opts.entry;
   const cssPath = [];
 
   taskTarget = args.production ? paths.styles.prod : paths.styles.dev;
 
   if (args.production) {
-    opts.entry.css.inline = true;
-    opts.entry.css.external = false;
+    entry.css.inline = true;
+    entry.css.external = false;
   }
 
-  if (opts.entry.css.external) {
-    cssPath.push(paths.styles.src + opts.entry.cssExternal);
+  if (entry.css.external) {
+    cssPath.push(paths.styles.src + entry.cssExternal);
   }
-  if (opts.entry.css.inline) {
-    cssPath.push(paths.styles.src + opts.entry.cssInline);
+  if (entry.css.inline) {
+    cssPath.push(paths.styles.src + entry.cssInline);
   }
 
   gulp.task('style', gulp.series('lint:style', () => {

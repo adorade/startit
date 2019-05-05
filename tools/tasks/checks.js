@@ -13,6 +13,7 @@ import { green, magenta } from 'ansi-colors';
 const checks = ({
   gulp,
   config,
+  opts,
   taskTarget
 }) => {
   gulp.task('settings', done => {
@@ -21,7 +22,7 @@ const checks = ({
     log(magenta('Directories configuration:\n'), config.dirs);
     log(magenta('Paths configuration:\n'), config.paths);
     log(magenta('Files extensions:\n'), config.fileExt);
-    log(magenta('Options configuration:\n'), config.options);
+    log(magenta('Options configuration:\n'), opts);
     log(magenta('Task Target:'), taskTarget);
     done();
   });

@@ -15,13 +15,13 @@ const pug = ({
   plugins,
   args,
   config,
+  opts,
   taskTarget,
   browserSync
 }) => {
   const paths = config.paths;
-  const entry = config.options.entry;
   const fileExt = config.fileExt;
-  const opts = config.options;
+  const entry = opts.entry;
 
   if (args.production) {
     entry.css.inline = true;
@@ -50,6 +50,7 @@ const pug = ({
         // Make data available to pug
         locals: {
           config,
+          opts,
           entry,
           data,
           taskTarget,

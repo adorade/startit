@@ -4,7 +4,7 @@
  * Licensed under MIT
  * ========================================================================= */
 
-const dirs = {
+export const dirs = {
   root: './',
   src: 'src',
   dev: 'tmp',
@@ -14,7 +14,7 @@ const dirs = {
   ghpages: '.publish'
 };
 
-const paths = {
+export const paths = {
   styles: {
     src: `${dirs.src}/scss/`,
     dev: `${dirs.dev}/css/`,
@@ -56,7 +56,7 @@ const paths = {
   }
 };
 
-const fileExt = {
+export const fileExt = {
   script: '**/*.es6',
   style: '**/*.scss',
   font: '**/*.{otf,eot,svg,ttf,woff,woff2}',
@@ -70,83 +70,4 @@ const fileExt = {
   css: '**/*.css',
   js: '**/*.js',
   html: '**/*.html'
-};
-
-const options = {
-  entry: {
-    cssExternal: 'style**.{scss,sass}',
-    cssInline: 'inline**.{scss,sass}',
-    css: {
-      inline: true,
-      external: false
-    }
-  },
-  styles: {
-    failAfterError: false,
-    reportOutputDir: paths.logs.gulp,
-    reporters: [
-      { formatter: 'string', console: true, save: 'styles.txt' }
-    ],
-    syntax: 'scss'
-  },
-  sass: {
-    outputStyle: 'expanded',
-    precision: 6
-  },
-  autoprefixer: {
-    // browsers: [], // see .browserslistrc
-    cascade: false
-  },
-  csso: {
-    restructure: false,
-    comments: false
-  },
-  eslint: {
-    // see .eslintrc.json
-  },
-  babel: {
-    // see .babelrc.js
-    comments: false
-  },
-  uglify: {
-    // option here
-  },
-  images: {
-    gif: { interlaced: true },
-    jpeg: { progressive: true },
-    png: { optimizationLevel: 4 },
-    svg: { plugins: [{ removeViewBox: true }] },
-    webp: { // https://github.com/imagemin/imagemin-webp#options
-      preset: 'default',
-      quality: 60
-    }
-  },
-  pug: {
-    doctype: 'html',
-    pretty: true
-  },
-  htmlmin: {
-    collapseBooleanAttributes: true,
-    collapseInlineTagWhitespace: true,
-    collapseWhitespace: true,
-    minifyCSS: true,
-    minifyJS: true,
-    removeAttributeQuotes: true,
-    removeComments: true,
-    // removeEmptyAttributes: true,
-    removeEmptyElements: true,
-    removeRedundantAttributes: true,
-    removeScriptTypeAttributes: true,
-    removeStyleLinkTypeAttributes: true
-  },
-  watch: {
-    delay: 2000
-  }
-};
-
-export {
-  dirs,
-  paths,
-  fileExt,
-  options
 };

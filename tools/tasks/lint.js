@@ -12,11 +12,11 @@ import { debugInfo } from '../util/handler';
 const lint = ({
   gulp,
   plugins,
-  config
+  config,
+  opts
 }) => {
   const paths = config.paths;
   const fileExt = config.fileExt;
-  const opts = config.options;
 
   // lint *.scss sources files
   gulp.task('lint:style', () => {
