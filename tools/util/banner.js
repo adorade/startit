@@ -2,8 +2,7 @@
  * StartIt (v1.0.0): banner.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
- * ============================================================================
- */
+ * ========================================================================== */
 
 const pkg = require(`${process.cwd()}/package.json`);
 

@@ -2,7 +2,7 @@
  * StartIt (v1.0.0): style.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
- * ========================================================================= */
+ * ========================================================================== */
 'use strict';
 
 import { debugInfo } from '../util/handler';
@@ -52,7 +52,7 @@ const style = ({
       .pipe(plugins.if(args.production, plugins.rename({ extname: '.min.css' })))
       .pipe(plugins.if(!args.production, plugins.header(banner())))
       .pipe(gulp.dest(taskTarget, { sourcemaps: './' }))
-      .pipe(browserSync.stream({match: fileExt.css }));
+      .pipe(browserSync.stream({ match: fileExt.css }));
   }));
 };
 

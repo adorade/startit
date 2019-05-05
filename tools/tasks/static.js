@@ -2,7 +2,7 @@
  * StartIt (v1.0.0): static.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
- * ========================================================================= */
+ * ========================================================================== */
 'use strict';
 
 import { debugInfo } from '../util/handler';

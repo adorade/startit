@@ -2,7 +2,7 @@
  * StartIt (v1.0.0): pug.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
- * ========================================================================= */
+ * ========================================================================== */
 'use strict';
 
 import fs from 'fs';
@@ -32,7 +32,7 @@ const pug = ({
   const inlinePath = taskTarget + '/css/inline.css';
 
   gulp.task('pug', gulp.series('lint:pug', () => {
-    let data = getJsonData({dataPath}) || {};
+    let data = getJsonData({ dataPath }) || {};
 
     return gulp
       .src([
@@ -45,7 +45,6 @@ const pug = ({
       })
       .pipe(debugInfo({ title: 'Pug files:' }))
       .pipe(plugins.pug({
-        // compress if in production
         pretty: true,
         // Make data available to pug
         locals: {
@@ -65,6 +64,7 @@ const pug = ({
           rootpath: './'
         })
       ))
+      // Compress if in production
       .pipe(plugins.if(args.production, plugins.htmlmin(opts.htmlmin)))
       .pipe(debugInfo({ title: 'Dest:' }))
       .pipe(gulp.dest(taskTarget))

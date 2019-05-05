@@ -2,7 +2,7 @@
  * StartIt (v1.0.0): help.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
- * ========================================================================= */
+ * ========================================================================== */
 'use strict';
 
 // For fancy log and colors in console

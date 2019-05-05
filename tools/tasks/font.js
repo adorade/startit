@@ -2,7 +2,7 @@
  * StartIt (v1.0.0): font.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
- * ========================================================================= */
+ * ========================================================================== */
 'use strict';
 
 import { debugInfo } from '../util/handler';
