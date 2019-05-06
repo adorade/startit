@@ -7,7 +7,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /* eslint-disable semi, no-console */
-// USAGE: yarn release-version 1.0.0 1.1.0
+// USAGE: yarn release-version 1.1.0 1.1.0
 
 'use strict'
 
@@ -93,7 +93,8 @@ function main(args) {
   const EXCLUDED_DIRS = new Set([
     '.git',
     'node_modules',
-    'vendor'
+    'vendor',
+    '.extra', 'coverage', 'docs', 'dist', 'logs', 'test', 'tmp'
   ])
   const INCLUDED_EXTENSIONS = new Set([
     // This extension whitelist is how we avoid modifying binary files
@@ -101,11 +102,13 @@ function main(args) {
     '.css',
     '.html',
     '.js',
+    '.es6',
     '.json',
     '.md',
     '.scss',
     '.txt',
-    '.yml'
+    '.yml',
+    '.yaml'
   ])
   replaceRecursively('.', EXCLUDED_DIRS, INCLUDED_EXTENSIONS, oldVersion, newVersion)
 }

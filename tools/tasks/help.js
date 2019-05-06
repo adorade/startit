@@ -1,5 +1,5 @@
 /*!
- * StartIt (v1.0.0): help.js
+ * StartIt (v1.1.0): help.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */
