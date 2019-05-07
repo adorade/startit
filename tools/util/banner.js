@@ -1,5 +1,5 @@
 /*!
- * StartIt (v1.1.0): banner.js
+ * StartIt (v1.1.0): tools/util/banner.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */

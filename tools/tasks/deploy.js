@@ -1,28 +1,25 @@
 /*!
- * StartIt (v1.1.0): deploy.js
+ * StartIt (v1.1.0): tools/tasks/deploy.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */
-'use strict';
 
-import { debugInfo } from '../util/handler';
+import { src, series, plugins, del, dirs, fileExt, opts, debugInfo } from '../util';
+
+// Clean GitHub pages output folder
+function cleanGhPages() {
+  return del(dirs.ghpages);
+}
+
+// Publish files
+function publish() {
+  return src(dirs.prod + fileExt.deploy)
+    .pipe(debugInfo({ title: 'GitHub Pages:' }))
+    .pipe(plugins.ghPages(opts.deploy));
+}
 
 // Deploy files to Github Pages
-const deploy = ({
-  gulp,
-  plugins,
-  config,
-  opts
-}) => {
-  const dir = config.dirs;
-  const fileExt = config.fileExt;
-
-  gulp.task('deploy', gulp.series('clean:ghpages', () => {
-    return gulp
-      .src(dir.prod + fileExt.deploy)
-      .pipe(debugInfo({ title: 'GitHub Pages:' }))
-      .pipe(plugins.ghPages(opts.deploy));
-  }));
-};
-
-export default deploy;
+export const deploy = series(
+  cleanGhPages,
+  publish
+);

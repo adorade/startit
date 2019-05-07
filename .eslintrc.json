@@ -34,7 +34,7 @@
     "overrides": [
         {
             "files": [
-                "gulpfile.babel.js",
+                "gulpfile.esm.js",
                 "tools/**/*.js",
                 "jest.config.js"
             ],

@@ -1,75 +1,63 @@
 /*!
- * StartIt (v1.1.0): pug.js
+ * StartIt (v1.1.0): tools/tasks/pug.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */
-'use strict';
 
-import fs from 'fs';
-import { getJsonData } from '../util/util';
-import { debugInfo } from '../util/handler';
+import { lintPug } from './lint';
+import {
+  src, dest, series, args, taskTarget, plugins, browserSync, fs,
+  paths, fileExt, opts, debugInfo, getJsonData  } from '../util';
 
 // Generating HTML from templates and content files
-const pug = ({
-  gulp,
-  plugins,
-  args,
-  config,
-  opts,
-  taskTarget,
-  browserSync
-}) => {
-  const paths = config.paths;
-  const fileExt = config.fileExt;
-  const entry = opts.entry;
+// ----------------------------
+const entry = opts.entry;
 
-  if (args.production) {
-    entry.css.inline = true;
-    entry.css.external = false;
-  }
+if (args.production) {
+  entry.css.inline = true;
+  entry.css.external = false;
+}
 
-  const dataPath = paths.views.data;
-  const inlinePath = taskTarget + '/css/inline.css';
+const dataPath = paths.views.data;
+const inlinePath = taskTarget + '/css/inline.min.css';
 
-  gulp.task('pug', gulp.series('lint:pug', () => {
-    let data = getJsonData({ dataPath }) || {};
+export function pug() {
+  let data = getJsonData({ dataPath }) || {};
 
-    return gulp
-      .src([
-        paths.views.src + fileExt.pug,
-        // Ignore files and folders that start with "_"
-        '!' + paths.views.src + '{**/_*,**/_*/**}'
-      ], {
-        // Only deal with files that change in the pipeline
-        // since: gulp.lastRun('pug')
+  return src([
+    paths.views.src + fileExt.pug,
+    // Ignore files and folders that start with "_"
+    '!' + paths.views.src + '{**/_*,**/_*/**}'
+  ], {
+    // Only deal with files that change in the pipeline
+    // since: lastRun(pug)
+  })
+    .pipe(debugInfo({ title: 'Pug files:' }))
+    .pipe(plugins.pug({
+      pretty: true,
+      // Make data available to pug
+      locals: {
+        data,
+        entry,
+        inlinePath
+      }
+    }))
+    .pipe(plugins.cached('pug_compile'))
+    // Check if inline.css exists and use inlineSource to inject it
+    .pipe(plugins.if(
+      fs.existsSync(inlinePath),
+      plugins.inlineSource({
+        rootpath: './'
       })
-      .pipe(debugInfo({ title: 'Pug files:' }))
-      .pipe(plugins.pug({
-        pretty: true,
-        // Make data available to pug
-        locals: {
-          config,
-          opts,
-          entry,
-          data,
-          taskTarget,
-          inlinePath
-        }
-      }))
-      .pipe(plugins.cached('pug_compile'))
-      // Check if inline.css exists and use inlineSource to inject it
-      .pipe(plugins.if(
-        fs.existsSync(inlinePath),
-        plugins.inlineSource({
-          rootpath: './'
-        })
-      ))
-      // Compress if in production
-      .pipe(plugins.if(args.production, plugins.htmlmin(opts.htmlmin)))
-      .pipe(debugInfo({ title: 'Dest:' }))
-      .pipe(gulp.dest(taskTarget))
-      .pipe(browserSync.stream({ match: fileExt.html }));
-  }));
-};
+    ))
+    // Compress if in production
+    .pipe(plugins.if(args.production, plugins.htmlmin(opts.htmlmin)))
+    .pipe(debugInfo({ title: 'Dest:' }))
+    .pipe(dest(taskTarget))
+    .pipe(browserSync.stream({ match: fileExt.html }));
+}
 
-export default pug;
+export const pages = series(
+  lintPug,
+  pug
+);

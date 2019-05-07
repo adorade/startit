@@ -1,5 +1,5 @@
 /*!
- * StartIt (v1.1.0): config.js
+ * StartIt (v1.1.0): tools/util/config.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */
@@ -35,7 +35,7 @@ export const paths = {
     dev: `${dirs.dev}/images/`,
     prod: `${dirs.prod}/images/`
   },
-  static: {
+  statics: {
     src: `${dirs.src}/static/`,
     dev: `${dirs.dev}/static/`,
     prod: `${dirs.prod}/static/`

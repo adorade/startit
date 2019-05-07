@@ -1,47 +1,36 @@
 /*!
- * StartIt (v1.1.0): clean.js
+ * StartIt (v1.1.0): tools/tasks/clean.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */
-'use strict';
 
-import del from 'del';
+import { series, del, dirs } from '../util';
 
 // Clean output folder at the start of every run
-const clean = ({
-  gulp,
-  config
-}) => {
-  const dir = config.dirs;
+// ----------------------------
 
-  // Clean development output folder
-  gulp.task('clean:development', () => {
-    return del(dir.dev);
-  });
+// Clean development output folder
+export function cleanDev() {
+  return del(dirs.dev);
+}
+cleanDev.displayName = 'clean:dev';
 
-  // Clean production output folder
-  gulp.task('clean:production', () => {
-    return del(dir.prod);
-  });
+// Clean production output folder
+export function cleanProd() {
+  return del(dirs.prod);
+}
+cleanProd.displayName = 'clean:prod';
 
-  // Clean logs folder
-  gulp.task('clean:logs', () => {
-    return del(dir.logs);
-  });
+// Clean logs output folder
+export function cleanLogs() {
+  return del(dirs.logs);
+}
+cleanLogs.displayName = 'clean:logs';
 
-  // Clean GitHub pages output folder
-  gulp.task('clean:ghpages', () => {
-    return del(dir.ghpages);
-  });
-
-  // And The Cleaner
-  const cleaner = gulp.series(
-    'clean:development',
-    'clean:production',
-    'clean:logs',
-    'clean:ghpages'
-  );
-  gulp.task('cleaner', cleaner);
-};
-
-export default clean;
+// And The Cleaner
+export const cleaner = series(
+  cleanDev,
+  cleanProd,
+  cleanLogs
+);
+cleaner.displayName = 'clean:all';

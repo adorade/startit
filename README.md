@@ -66,12 +66,12 @@ Task        | Description
 ------------|---------
 **cleaner** | Remove all the compiled files
 **linter**  | Lint styles, scripts and pug files
-**style**   | Compile the Sass styles
-**script**  | Compile the JavaScript files
-**font**    | Copy fonts
-**static**  | Copy static files
+**styles**  | Compile the Sass styles
+**scripts** | Compile the JavaScript files
+**fonts**   | Copy fonts
+**statics** | Copy static files
 **images**  | Optimize images
-**pug**     | Compile the Pug templates
+**pages**   | Compile the Pug templates
 **serve**   | Start the server and watch for any changes
 **build**   | Build the project
 **dev**     | Compile and watch for changes
@@ -188,7 +188,7 @@ To automatically deploy your project to [GitHub Pages](https://pages.github.com/
 ```bash
 yarn run deploy
 # or
-gulp deploy
+gulp build --production && gulp deploy
 ```
 
 ## LICENSE

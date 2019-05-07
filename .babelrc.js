@@ -11,7 +11,7 @@ const presets = [
   }]
 ];
 const plugins = [
-  'add-module-exports'
+  // your plugins here
 ];
 
 module.exports = {
