@@ -80,6 +80,8 @@ Task        | Description
 **checks**  | Check gulp configuration
 **help**    | Print help message
 
+Run `gulp --tasks` to see all available gulp tasks.
+
 If you are in development, the `gulp dev` command is the best choice for you. Go to the project folder in the console and execute `gulp dev`, it will compile the project and start a server that will refresh every time you change something in the code.  
 Gulp will be watching for changes and will tell you how to access the project from local and public url.  
 Every browser that point to that url will be auto refreshed. As an extra feature for testing purpose any interaction on one browser will be reflected on any others. Try it on a phone, tablet and pc at the same time.

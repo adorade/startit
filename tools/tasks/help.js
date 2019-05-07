@@ -31,7 +31,7 @@ export function help(done) {
   log(green('     checks: Check gulp configuration'));
   log(green('       help: Print help message'));
   log(green('--------------------------------------------------------'));
-  log(green('  For full list of tasks use: gulp -T'));
+  log(green('  Run `gulp --tasks` to see all available gulp tasks.'));
   log('');
   done();
 }
