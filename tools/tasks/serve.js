@@ -4,7 +4,9 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import { styles, scripts, fonts, images, statics, pages } from './';
+import {
+  lintScss, lintJs, lintPug, compile, transpile, fonts, image, convert, statics, pug
+} from './';
 import {
   series, watch, args, taskTarget, browserSync,
   log, magenta, bgBlue, bgRed,
@@ -12,8 +14,6 @@ import {
 
 // Automatically reload assets or refresh your browser when changes occur
 // -----------------------------------------------------------------------------
-
-// Gulp serve task
 export function serve(done) {
   if (!args.production) {
     // Serve files from the 'tmp' directory of this project
@@ -26,16 +26,17 @@ export function serve(done) {
       ui: false
     });
 
+    // Note: tasks must be a function with `.displayName`
     const watchers = [
       {
         name: 'Styles',
         paths: [paths.styles.src + fileExt.style],
-        tasks: [styles]
+        tasks: [lintScss, compile]
       },
       {
         name: 'Scripts',
         paths: [paths.scripts.src + fileExt.script],
-        tasks: [scripts]
+        tasks: [lintJs, transpile]
       },
       {
         name: 'Fonts',
@@ -45,7 +46,7 @@ export function serve(done) {
       {
         name: 'Images',
         paths: [paths.images.src + fileExt.image],
-        tasks: [images]
+        tasks: [image, convert]
       },
       {
         name: 'Statics',
@@ -60,7 +61,7 @@ export function serve(done) {
           paths.docs.src + fileExt.docs,    // Docs files
           taskTarget + '/css/inline.css'    // inline.css
         ],
-        tasks: [pages]
+        tasks: [lintPug, pug]
       }
     ];
 
@@ -74,7 +75,7 @@ export function serve(done) {
       let taskNames = [];
 
       for (let value of Object.values(watcher.tasks)) {
-        let taskName = value.name;
+        let taskName = value.displayName;
         taskNames.push(taskName);
       }
 
