@@ -28,7 +28,7 @@ if (entry.css.inline) {
   cssPath.push(paths.styles.src + entry.cssInline);
 }
 
-function compile() {
+export function compile() {
   return src(cssPath, {
     sourcemaps: true
     // Only deal with files that change in the pipeline
@@ -44,6 +44,7 @@ function compile() {
     .pipe(dest(taskTarget, { sourcemaps: './' }))
     .pipe(browserSync.stream({ match: fileExt.css }));
 }
+compile.displayName = 'compile';
 
 export const styles = series(
   lintScss,

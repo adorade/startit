@@ -19,3 +19,4 @@ export function statics() {
     .pipe(dest(taskTarget))
     .pipe(browserSync.stream({ match: fileExt.static }));
 }
+statics.displayName = 'statics';

@@ -56,6 +56,7 @@ export function pug() {
     .pipe(dest(taskTarget))
     .pipe(browserSync.stream({ match: fileExt.html }));
 }
+pug.displayName = 'pug';
 
 export const pages = series(
   lintPug,

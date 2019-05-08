@@ -13,7 +13,7 @@ import {
 const taskTarget = args.production ? paths.images.prod : paths.images.dev;
 
 // Optimize images
-function image() {
+export function image() {
   return src(paths.images.src + fileExt.image, {
     // Only deal with files that change in the pipeline
     since: lastRun(image)
@@ -28,9 +28,10 @@ function image() {
     .pipe(dest(taskTarget))
     .pipe(browserSync.stream({ match: fileExt.image }));
 }
+image.displayName = 'image';
 
 // Convert for web
-function convert() {
+export function convert() {
   return src(paths.images.src + fileExt.webp, {
     // Only deal with files that change in the pipeline
     since: lastRun(convert)
@@ -40,6 +41,7 @@ function convert() {
     .pipe(dest(taskTarget))
     .pipe(browserSync.stream({ match: fileExt.image }));
 }
+convert.displayName = 'convert';
 
 // And The Imagine
 export const images = series(

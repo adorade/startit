@@ -13,7 +13,7 @@ import {
 // ----------------------------
 const taskTarget = args.production ? paths.scripts.prod : paths.scripts.dev;
 
-function transpile() {
+export function transpile() {
   return src(paths.scripts.src + fileExt.script, {
     sourcemaps: true,
     // Only deal with files that change in the pipeline
@@ -27,6 +27,7 @@ function transpile() {
     .pipe(dest(taskTarget, { sourcemaps: './' }))
     .pipe(browserSync.stream({ match: fileExt.js }));
 }
+transpile.displayName = 'transpile';
 
 export const scripts = series(
   lintJs,

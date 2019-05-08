@@ -21,3 +21,4 @@ export function fonts() {
     .pipe(dest(taskTarget))
     .pipe(browserSync.stream({ match: fileExt.font }));
 }
+fonts.displayName = 'fonts';

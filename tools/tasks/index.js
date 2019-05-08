@@ -7,12 +7,12 @@
 export { checks } from './checks';                                  // Checks
 export { cleanDev, cleanProd, cleanLogs, cleaner } from './clean';  // Cleaners
 export { lintScss, lintJs, lintPug, linter } from './lint';         // Linters
-export { styles } from './styles';                                  // Styles
-export { scripts } from './scripts';                                // Scripts
+export { compile, styles } from './styles';                         // Styles
+export { transpile, scripts } from './scripts';                     // Scripts
 export { fonts } from './fonts';                                    // Statics
 export { statics } from './statics';                                // Statics
-export { images } from './images';                                  // Images
-export { pages } from './pug';                                      // Pages
+export { image, convert, images } from './images';                  // Images
+export { pug, pages } from './pug';                                 // Pages
 export { serve } from './serve';                                    // Serve and Watch
 export { deploy } from './deploy';                                  // Deploy
 export { help } from './help';                                      // Help
