@@ -30,28 +30,28 @@ export function serve(done) {
     const watchers = [
       {
         name: 'Styles',
-        paths: [paths.styles.src + fileExt.style],
-        tasks: [lintScss, compile]
+        paths: [ paths.styles.src + fileExt.style ],
+        tasks: [ lintScss, compile ]
       },
       {
         name: 'Scripts',
-        paths: [paths.scripts.src + fileExt.script],
-        tasks: [lintJs, transpile]
+        paths: [ paths.scripts.src + fileExt.script ],
+        tasks: [ lintJs, transpile ]
       },
       {
         name: 'Fonts',
-        paths: [paths.fonts.src + fileExt.font],
-        tasks: [fonts]
+        paths: [ paths.fonts.src + fileExt.font ],
+        tasks: [ fonts ]
       },
       {
         name: 'Images',
-        paths: [paths.images.src + fileExt.image],
-        tasks: [image, convert]
+        paths: [ paths.images.src + fileExt.image ],
+        tasks: [ image, convert ]
       },
       {
         name: 'Statics',
-        paths: [paths.statics.src + fileExt.static],
-        tasks: [statics]
+        paths: [ paths.statics.src + fileExt.static ],
+        tasks: [ statics ]
       },
       {
         name: 'Templates',
@@ -61,14 +61,14 @@ export function serve(done) {
           paths.docs.src + fileExt.docs,    // Docs files
           taskTarget + '/css/inline.css'    // inline.css
         ],
-        tasks: [lintPug, pug]
+        tasks: [ lintPug, pug ]
       }
     ];
 
     for (let watcher of watchers) {
       log(bgRed(`Watching ${watcher.name}`));
 
-      for (let p of [watcher.paths]) {
+      for (let p of [ watcher.paths ]) {
         log(`${bgBlue('Source:')} ${magenta(p)}`);
       }
 

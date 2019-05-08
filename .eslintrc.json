@@ -14,6 +14,7 @@
         "codeFrame": false
     },
     "rules": {
+        "array-bracket-spacing": ["error", "always", {"objectsInArrays": false}],
         "block-spacing": "error",
         "comma-dangle": "error",
         "comma-style": ["error", "last"],
