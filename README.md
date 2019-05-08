@@ -9,7 +9,7 @@
 
 ## Description
 
-> ✔ StartIt is a simple framework enabling faster delivery of projects and/or automatic deployment of [GitHub Pages](https://pages.github.com/)
+> ✔ Simple starter project enabling faster delivery of projects and/or automatic deployment of [GitHub Pages](https://pages.github.com/)
 
 This provides an example project which automates tasks with gulp including:
 

@@ -1,0 +1,21 @@
+//- mixins/menu.pug
+//- Usage:
+//- include path/to/mixins/_menu
+//- +menuLink(menu)
+mixin menuLink(menu)
+  if currentUrl
+    - currentUrl= currentUrl
+  else
+    - currentUrl = './';
+
+  - basePath = (path) => `${path}`;
+
+  ul.top-menu
+    for menuItem in data.menu
+      if (currentUrl === menuItem.link)
+        - linkActive = 'active';
+      else
+        - linkActive = '';
+
+      li.top-menu-item(class=linkActive)
+        a.top-menu-link(href=basePath(menuItem.link)) #{menuItem.label}

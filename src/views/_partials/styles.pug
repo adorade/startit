@@ -1,0 +1,17 @@
+//- partial/styles.pug
+block external-css
+  //- link(
+  //-   rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  //-   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  //-   crossorigin="anonymous")
+  //- link(
+  //-   rel="stylesheet"
+  //-   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/zenburn.min.css"
+  //-   integrity="sha256-l1EdIP3q4FnAcLeY5yyxDdRtd5e13V7VXLXjuYj2gRA="
+  //-   crossorigin="anonymous")
+
+block custom-css
+  if entry.css.inline
+    link(rel="stylesheet" href=`${inlinePath}` inline)
+  if entry.css.external
+    link(rel="stylesheet" href="css/style.css")

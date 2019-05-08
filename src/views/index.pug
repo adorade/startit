@@ -3,22 +3,8 @@ extends _layout/base
 
 block settings
   - title = 'Welcome to StartIt';
-  - description = 'Simple pug starter aimed to quickly deliver HTML & CSS projects';
+  - description = 'Simple starter project aimed to quickly deliver your projects';
   - currentUrl = 'index.html';
 
 block content
-  //- string interpolation
-  h1 #{title}!
-  p Simple pug starter [framework] enabling faster delivery of HTML &amp; CSS projects to a private server and/or automatic deployment of GitHub pages.
-  p There are #{data.menu.length} items in the menu.
-  //-:remarkable(linkify)
-  :markdown-it(linkify= true)
-    # Support for markdown
-    - one
-    - two
-
-    Markdown document with http://example.com
-
-    ```js
-    var codeBlocks;
-    ```
+  include _includes/hero

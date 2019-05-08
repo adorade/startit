@@ -1,13 +1,9 @@
-// Style File
+// Style
 
-@import "components/color";
+@import "globals/variables";
+@import "layout/base";
+@import "layout/grid";
 @import "components/typography";
 @import "components/header";
+@import "components/main";
 @import "components/footer";
-@import "layout/layout";
-
-div,
-p {
-  padding: 1rem;
-  margin: 1rem;
-}

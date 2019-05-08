@@ -44,9 +44,7 @@ export const paths = {
     src: `${dirs.src}/views/`,
     dev: `${dirs.dev}/`,
     prod: `${dirs.prod}/`,
-    data: `${dirs.src}/views/_data/`,
-    component: `${dirs.src}/views/_component/`,
-    layout: `${dirs.src}/views/_layout`
+    data: `${dirs.src}/views/_data/`
   },
   docs: {
     src: `${dirs.root}/docs/`
