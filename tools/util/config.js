@@ -49,7 +49,7 @@ export const paths = {
     layout: `${dirs.src}/views/_layout`
   },
   docs: {
-    src: `${dirs.src}/docs/`
+    src: `${dirs.root}/docs/`
   },
   logs: {
     gulp: `${dirs.logs}/gulp/`
