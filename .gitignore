@@ -13,7 +13,7 @@ coverage
 logs
 
 # Ignore docs files
-docs
+# docs
 
 # Files to ignore
 npm-debug.log*
