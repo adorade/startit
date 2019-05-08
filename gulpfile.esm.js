@@ -45,6 +45,9 @@ export const dev = series(
 );
 dev.description = 'Development task with serve';
 
+// Serve and watch
+export { serve };
+
 // Check gulp configuration task
 export { checks, help };
 
