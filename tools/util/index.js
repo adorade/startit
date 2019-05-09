@@ -1,5 +1,5 @@
 /*!
- * StartIt (v1.1.0): tools/util/index.js
+ * StartIt (v1.1.1): tools/util/index.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */

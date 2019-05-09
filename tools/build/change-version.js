@@ -7,7 +7,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /* eslint-disable semi, no-console */
-// USAGE: yarn release-version 1.1.0 1.1.0
 
 'use strict'
 
