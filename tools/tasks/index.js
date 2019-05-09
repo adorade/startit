@@ -16,3 +16,4 @@ export { pug, pages } from './pug';                                 // Pages
 export { serve } from './serve';                                    // Serve and Watch
 export { deploy } from './deploy';                                  // Deploy
 export { help } from './help';                                      // Help
+export { release } from './release';                                // Release

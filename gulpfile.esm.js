@@ -10,7 +10,7 @@ import {
   cleanDev, cleanProd, cleanLogs, cleaner,
   lintScss, lintJs, lintPug, linter,
   styles, scripts, fonts, statics, images, pages,
-  serve, deploy
+  serve, deploy, release
 } from './tools';
 
 // Linters
@@ -50,6 +50,9 @@ export { serve };
 
 // Check gulp configuration task
 export { checks, help };
+
+// Release to GitHub
+export { release };
 
 // Deploy to GitHub Pages
 export { deploy };

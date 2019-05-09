@@ -15,5 +15,6 @@ export {
   images,
   pages,
   serve,
-  deploy
+  deploy,
+  release
 } from './tasks';
