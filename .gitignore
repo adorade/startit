@@ -3,7 +3,7 @@
 node_modules
 tmp
 dist
-.extra
+.publish
 
 # To do Tasks
 .TODO

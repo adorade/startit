@@ -13,7 +13,7 @@ function cleanGhPages() {
 
 // Publish files
 function publish() {
-  return src(dirs.prod + fileExt.deploy)
+  return src(dirs.prod + '/' + fileExt.deploy)
     .pipe(debugInfo({ title: 'GitHub Pages:' }))
     .pipe(plugins.ghPages(opts.deploy));
 }
