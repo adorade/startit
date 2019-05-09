@@ -7,19 +7,21 @@
 // Load gulp's API
 export { src, dest, series, parallel, lastRun, watch, tree } from 'gulp';
 
-// Load all plugins in "devDependencies" into the variable $
+// Load gulp plugins
 export const plugins = require('gulp-load-plugins')({
   // when set to true, the plugin will log info to console.
   // Useful for bug reporting and issue debugging
-  DEBUG: false,
+  DEBUG: false
   // pattern: ['*'],
   // scope: ['devDependencies'],
-  rename: {
-    // 'gulp-stylelint': 'gStylelint',
-    // 'gulp-eslint': 'gEslint',
-    'gulp-pug-linter': 'pugLinter'
-    // 'ansi-colors': 'c'
-  }
+  // rename: {
+  //   'gulp-stylelint': 'gStylelint',
+  //   'gulp-eslint': 'gEslint',
+  //   'gulp-gh-pages': 'ghPages',
+  //   'gulp-inline-source': 'inlineSource',
+  //   'gulp-pug-linter': 'pugLinter',
+  //   'ansi-colors': 'c'
+  // }
   // config: `${process.cwd()}/package.json`
 });
 
