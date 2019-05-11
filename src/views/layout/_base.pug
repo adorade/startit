@@ -1,0 +1,22 @@
+//- layout/_base.pug
+doctype html
+html(lang="en")
+  block settings
+
+  head
+    block head
+      include ../partials/_head
+      include ../partials/_statics
+    block fonts
+      include ../partials/_fonts
+    block styles
+      include ../partials/_styles
+
+  body
+    block header
+      include ../partials/_header
+    block content
+    block footer
+      include ../partials/_footer
+    block scripts
+      include ../partials/_scripts
