@@ -46,12 +46,13 @@ export const paths = {
     prod: `${dirs.prod}/static/`
   },
   views: {
-    src: `${dirs.src}/views/**/*.pug`,
+    src: [ `${dirs.src}/views/**/*.pug`, `!./${dirs.src}/views/**/_*.pug` ],
+    all: `${dirs.src}/views/**/*.pug`,
     dev: `${dirs.dev}/`,
     prod: `${dirs.prod}/`,
     data: {
-      src: `${dirs.src}/views/_data/`,
-      all: `${dirs.src}/views/_data/**/*.json`
+      src: `${dirs.src}/views/data/`,
+      all: `${dirs.src}/views/data/**/*.json`
     }
   },
   docs: {

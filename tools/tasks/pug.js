@@ -24,11 +24,7 @@ const inlinePath = taskTarget + '/css/inline.min.css';
 export function pug() {
   let data = getJsonData({ dataPath }) || {};
 
-  return src([
-    paths.views.src,
-    // Ignore files and folders that start with "_"
-    '!' + paths.views.src + '{**/_*,**/_*/**}'
-  ], {
+  return src(paths.views.src, {
     // Only deal with files that change in the pipeline
     // since: lastRun(pug)
   })

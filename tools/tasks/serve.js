@@ -59,7 +59,7 @@ export function serve(done) {
       {
         name: 'Templates',
         paths: [
-          paths.views.src,
+          paths.views.all,
           paths.views.data.all,             // Data files
           paths.docs.src,                   // Docs files
           taskTarget + '/css/inline.css'    // inline.css
