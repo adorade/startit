@@ -6,7 +6,7 @@
 
 import {
   src, dest, lastRun, series, args, plugins, browserSync,
-  paths, fileExt, opts, debugInfo } from '../util';
+  paths, opts, debugInfo } from '../util';
 
 // Compressing new and modified images
 // ----------------------------
@@ -14,7 +14,7 @@ const taskTarget = args.production ? paths.images.prod : paths.images.dev;
 
 // Optimize images
 export function image() {
-  return src(paths.images.src + fileExt.image, {
+  return src(paths.images.src.image, {
     // Only deal with files that change in the pipeline
     since: lastRun(image)
   })
@@ -26,20 +26,20 @@ export function image() {
       plugins.imagemin.svgo(opts.images.svg)
     ]))
     .pipe(dest(taskTarget))
-    .pipe(browserSync.stream({ match: fileExt.image }));
+    .pipe(browserSync.stream({ match: '**/*.{jpg,jpeg,gif,svg,png}' }));
 }
 image.displayName = 'image';
 
 // Convert for web
 export function convert() {
-  return src(paths.images.src + fileExt.webp, {
+  return src(paths.images.src.webp, {
     // Only deal with files that change in the pipeline
     since: lastRun(convert)
   })
     .pipe(debugInfo({ title: 'Converted image:' }))
     .pipe(plugins.webp(opts.images.webp))
     .pipe(dest(taskTarget))
-    .pipe(browserSync.stream({ match: fileExt.image }));
+    .pipe(browserSync.stream({ match: '**/*.{jpg,jpeg,png,webp}' }));
 }
 convert.displayName = 'convert';
 

@@ -4,14 +4,14 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import { src, series, lastRun, plugins, fs, paths, fileExt, opts, debugInfo } from '../util';
+import { src, series, lastRun, plugins, fs, paths, opts, debugInfo } from '../util';
 
 // Code linting and validation
 // ----------------------------
 
 // lint *.scss sources files
 export function lintScss() {
-  return src(paths.styles.src + fileExt.style, {
+  return src(paths.styles.all, {
     // Only deal with files that change in the pipeline
     since: lastRun(lintScss)
   })
@@ -26,7 +26,7 @@ export function lintJs() {
   fs.mkdirSync(`${outputDir}`, { recursive: true });
   const output = fs.createWriteStream( `${outputDir}/scripts.txt` );
 
-  return src(paths.scripts.src + fileExt.script, {
+  return src(paths.scripts.src, {
     // Only deal with files that change in the pipeline
     since: lastRun(lintJs)
   })
@@ -39,7 +39,7 @@ lintJs.displayName = 'lint:js';
 
 // lint *.pug sources files
 export function lintPug() {
-  return src(paths.views.src + fileExt.pug, {
+  return src(paths.views.src, {
     // Only deal with files that change in the pipeline
     since: lastRun('lint:pug')
   })

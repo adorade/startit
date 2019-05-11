@@ -10,7 +10,7 @@ import {
 import {
   series, watch, args, taskTarget, browserSync,
   log, magenta, bgBlue, bgRed,
-  paths, fileExt, opts, watchEvent } from '../util';
+  paths, opts, watchEvent } from '../util';
 
 // Automatically reload assets or refresh your browser when changes occur
 // -----------------------------------------------------------------------------
@@ -30,35 +30,38 @@ export function serve(done) {
     const watchers = [
       {
         name: 'Styles',
-        paths: [ paths.styles.src + fileExt.style ],
+        paths: [ paths.styles.all ],
         tasks: [ lintScss, compile ]
       },
       {
         name: 'Scripts',
-        paths: [ paths.scripts.src + fileExt.script ],
+        paths: [ paths.scripts.src ],
         tasks: [ lintJs, transpile ]
       },
       {
         name: 'Fonts',
-        paths: [ paths.fonts.src + fileExt.font ],
+        paths: [ paths.fonts.src ],
         tasks: [ fonts ]
       },
       {
         name: 'Images',
-        paths: [ paths.images.src + fileExt.image ],
+        paths: [
+          paths.images.src.image,
+          paths.images.src.webp
+        ],
         tasks: [ image, convert ]
       },
       {
         name: 'Statics',
-        paths: [ paths.statics.src + fileExt.static ],
+        paths: [ paths.statics.src ],
         tasks: [ statics ]
       },
       {
         name: 'Templates',
         paths: [
-          paths.views.src + fileExt.pug,
-          paths.views.data + fileExt.data,  // Data files
-          paths.docs.src + fileExt.docs,    // Docs files
+          paths.views.src,
+          paths.views.data.all,             // Data files
+          paths.docs.src,                   // Docs files
           taskTarget + '/css/inline.css'    // inline.css
         ],
         tasks: [ lintPug, pug ]

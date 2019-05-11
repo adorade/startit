@@ -7,14 +7,14 @@
 import { lintJs } from './lint';
 import {
   src, dest, series, lastRun, args, plugins, browserSync,
-  paths, fileExt, opts, banner, debugInfo } from '../util';
+  paths, opts, banner, debugInfo } from '../util';
 
 // Transpiling ES6 to cross-browser-compatible ES5 code
 // ----------------------------
 const taskTarget = args.production ? paths.scripts.prod : paths.scripts.dev;
 
 export function transpile() {
-  return src(paths.scripts.src + fileExt.script, {
+  return src(paths.scripts.src, {
     sourcemaps: true,
     // Only deal with files that change in the pipeline
     since: lastRun(transpile)
@@ -25,7 +25,7 @@ export function transpile() {
     .pipe(plugins.if(args.production, plugins.rename({ extname: '.min.js' })))
     .pipe(plugins.if(!args.production, plugins.header(banner())))
     .pipe(dest(taskTarget, { sourcemaps: './' }))
-    .pipe(browserSync.stream({ match: fileExt.js }));
+    .pipe(browserSync.stream({ match: '**/*.js' }));
 }
 transpile.displayName = 'transpile';
 

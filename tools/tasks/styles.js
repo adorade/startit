@@ -7,7 +7,7 @@
 import { lintScss } from './lint';
 import {
   src, dest, series, args, plugins, browserSync,
-  paths, fileExt, opts, banner, debugInfo } from '../util';
+  paths, opts, banner, debugInfo } from '../util';
 
 // Compiling Sass to CSS code
 // ----------------------------
@@ -42,7 +42,7 @@ export function compile() {
     .pipe(plugins.if(args.production, plugins.rename({ extname: '.min.css' })))
     .pipe(plugins.if(!args.production, plugins.header(banner())))
     .pipe(dest(taskTarget, { sourcemaps: './' }))
-    .pipe(browserSync.stream({ match: fileExt.css }));
+    .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 compile.displayName = 'compile';
 

@@ -4,7 +4,7 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import { src, series, plugins, del, dirs, fileExt, opts, debugInfo } from '../util';
+import { src, series, plugins, del, dirs, paths, opts, debugInfo } from '../util';
 
 // Clean GitHub pages output folder
 function cleanGhPages() {
@@ -13,7 +13,7 @@ function cleanGhPages() {
 
 // Publish files
 function publish() {
-  return src(dirs.prod + '/' + fileExt.deploy)
+  return src(paths.deploy.src)
     .pipe(debugInfo({ title: 'GitHub Pages:' }))
     .pipe(plugins.ghPages(opts.deploy));
 }
