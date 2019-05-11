@@ -15,7 +15,7 @@ export {
 export { banner } from './banner';
 
 // Config
-export { dirs, paths, fileExt } from './config';
+export { dirs, paths } from './config';
 
 // Options
 export { options as opts } from './options';

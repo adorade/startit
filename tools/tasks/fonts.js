@@ -6,19 +6,19 @@
 
 import {
   src, dest, lastRun, args, browserSync,
-  paths, fileExt, debugInfo } from '../util';
+  paths, debugInfo } from '../util';
 
 // Copy font files
 // ----------------------------
 const taskTarget = args.production ? paths.fonts.prod : paths.fonts.dev;
 
 export function fonts() {
-  return src(paths.fonts.src + fileExt.font, {
+  return src(paths.fonts.src, {
     // Only deal with files that change in the pipeline
     since: lastRun(fonts)
   })
     .pipe(debugInfo({ title: 'Copy fonts:' }))
     .pipe(dest(taskTarget))
-    .pipe(browserSync.stream({ match: fileExt.font }));
+    .pipe(browserSync.stream({ match: '**/*.{otf,eot,svg,ttf,woff,woff2}' }));
 }
 fonts.displayName = 'fonts';

@@ -6,7 +6,7 @@
 
 import {
   tree, taskTarget, log, green, magenta,
-  dirs, paths, fileExt, opts, banner } from '../util';
+  dirs, paths, opts, banner } from '../util';
 
 // Check gulp configuration
 // ----------------------------
@@ -15,7 +15,6 @@ export function checks(done) {
   log(green('Gulp Tasks:\n'), gulpTree.nodes);
   log(magenta('Directories configuration:\n'), dirs);
   log(magenta('Paths configuration:\n'), paths);
-  log(magenta('Files extensions:\n'), fileExt);
   log(magenta('Options configuration:\n'), opts);
   log(magenta('Task Target:'), taskTarget);
   log(green('Banner:\n'), banner());

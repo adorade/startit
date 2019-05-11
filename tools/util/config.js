@@ -9,6 +9,7 @@ export const dirs = {
   src: 'src',
   dev: 'tmp',
   prod: 'dist',
+  docs: 'docs',
   logs: 'logs',
   test: 'test',
   ghpages: '.publish'
@@ -17,55 +18,49 @@ export const dirs = {
 export const paths = {
   styles: {
     src: `${dirs.src}/scss/`,
+    all: `${dirs.src}/scss/**/*.scss`,
     dev: `${dirs.dev}/css/`,
     prod: `${dirs.prod}/css/`
   },
   scripts: {
-    src: `${dirs.src}/es6/`,
+    src: `${dirs.src}/es6/**/*.es6`,
     dev: `${dirs.dev}/js/`,
     prod: `${dirs.prod}/js/`
   },
   fonts: {
-    src: `${dirs.src}/fonts/`,
+    src: `${dirs.src}/fonts/**/*.{otf,eot,svg,ttf,woff,woff2}`,
     dev: `${dirs.dev}/fonts/`,
     prod: `${dirs.prod}/fonts/`
   },
   images: {
-    src: `${dirs.src}/images/`,
+    src: {
+      image: `${dirs.src}/images/**/*.{jpg,jpeg,gif,svg,png}`,
+      webp: `${dirs.src}/images/**/*.{jpg,jpeg,png,webp}`
+    },
     dev: `${dirs.dev}/images/`,
     prod: `${dirs.prod}/images/`
   },
   statics: {
-    src: `${dirs.src}/static/`,
+    src: `${dirs.src}/static/**/*.{json,xml,svg,ico,png}`,
     dev: `${dirs.dev}/static/`,
     prod: `${dirs.prod}/static/`
   },
   views: {
-    src: `${dirs.src}/views/`,
+    src: `${dirs.src}/views/**/*.pug`,
     dev: `${dirs.dev}/`,
     prod: `${dirs.prod}/`,
-    data: `${dirs.src}/views/_data/`
+    data: {
+      src: `${dirs.src}/views/_data/`,
+      all: `${dirs.src}/views/_data/**/*.json`
+    }
   },
   docs: {
-    src: `${dirs.root}/docs/`
+    src: `${dirs.docs}/**/*.md`
+  },
+  deploy: {
+    src: `${dirs.prod}/**/*`
   },
   logs: {
     gulp: `${dirs.logs}/gulp/`
   }
-};
-
-export const fileExt = {
-  script: '**/*.es6',
-  style: '**/*.scss',
-  font: '**/*.{otf,eot,svg,ttf,woff,woff2}',
-  image: '**/*.{jpg,jpeg,gif,svg,png}',
-  webp: '**/*.{jpg,jpeg,png,webp}',
-  pug: '**/*.pug',
-  data: '**/*.json',
-  docs: '**/*.md',
-  static: '**/*.{doc,docx,zip,pdf,js,json,xml}',
-  deploy: '**/*',
-  css: '**/*.css',
-  js: '**/*.js',
-  html: '**/*.html'
 };

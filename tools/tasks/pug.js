@@ -7,7 +7,7 @@
 import { lintPug } from './lint';
 import {
   src, dest, series, args, taskTarget, plugins, browserSync, fs,
-  paths, fileExt, opts, debugInfo, getJsonData  } from '../util';
+  paths, opts, debugInfo, getJsonData  } from '../util';
 
 // Generating HTML from templates and content files
 // ----------------------------
@@ -18,14 +18,14 @@ if (args.production) {
   entry.css.external = false;
 }
 
-const dataPath = paths.views.data;
+const dataPath = paths.views.data.src;
 const inlinePath = taskTarget + '/css/inline.min.css';
 
 export function pug() {
   let data = getJsonData({ dataPath }) || {};
 
   return src([
-    paths.views.src + fileExt.pug,
+    paths.views.src,
     // Ignore files and folders that start with "_"
     '!' + paths.views.src + '{**/_*,**/_*/**}'
   ], {
@@ -54,7 +54,7 @@ export function pug() {
     .pipe(plugins.if(args.production, plugins.htmlmin(opts.htmlmin)))
     .pipe(debugInfo({ title: 'Dest:' }))
     .pipe(dest(taskTarget))
-    .pipe(browserSync.stream({ match: fileExt.html }));
+    .pipe(browserSync.stream({ match: '**/*.html' }));
 }
 pug.displayName = 'pug';
 

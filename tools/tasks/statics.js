@@ -4,19 +4,19 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import { src, dest, lastRun, args, browserSync, paths, fileExt, debugInfo } from '../util';
+import { src, dest, lastRun, args, browserSync, paths, debugInfo } from '../util';
 
 // Copy static files
 // ----------------------------
 const taskTarget = args.production ? paths.statics.prod : paths.statics.dev;
 
 export function statics() {
-  return src(paths.statics.src + fileExt.static, {
+  return src(paths.statics.src, {
     // Only deal with files that change in the pipeline
     since: lastRun(statics)
   })
     .pipe(debugInfo({ title: 'Copy static:' }))
     .pipe(dest(taskTarget))
-    .pipe(browserSync.stream({ match: fileExt.static }));
+    .pipe(browserSync.stream({ match: '**/*.{json,xml,svg,ico,png}' }));
 }
 statics.displayName = 'statics';
