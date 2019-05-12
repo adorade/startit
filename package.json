@@ -1,7 +1,7 @@
 {
   "name": "startit",
   "title": "StartIt",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Simple starter project with automatic deployment of GitHub pages.",
   "author": "Adorade",
   "keywords": [
