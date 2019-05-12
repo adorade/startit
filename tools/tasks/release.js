@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /*!
  * StartIt (v1.1.1): tools/tasks/release.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
@@ -45,7 +44,7 @@ function createNewTag(done) {
 
   const version = getPackageJsonVersion();
 
-  plugins.git.tag(version, 'chore(release): Release version: ' + version, function(error) {
+  plugins.git.tag('v' + version, 'chore(release): Release v' + version, function(error) {
     if (error) {
       return done(error);
     }
@@ -54,11 +53,14 @@ function createNewTag(done) {
 }
 
 function githubRelease(done) {
-  conventionalGithubReleaser({
+  // Set in the settings page of your repository, as a secure variable
+  const AUTH = {
     type: 'oauth',
-    token: $CONVENTIONAL_GITHUB_RELEASER_TOKEN  // Set in the settings page of your repository, as a secure variable
-  }, {
-    preset: 'angular' // Or to any other commit message convention you use.
+    token: '$CONVENTIONAL_GITHUB_RELEASER_TOKEN'
+  };
+
+  conventionalGithubReleaser(AUTH, {
+    preset: 'angular'
   }, done);
 }
 
