@@ -1,5 +1,5 @@
 /*!
- * StartIt (v1.1.1): tools/tasks/statics.js
+ * StartIt (v1.2.0): tools/tasks/statics.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */

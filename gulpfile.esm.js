@@ -1,5 +1,5 @@
 /*!
- * StartIt (v1.1.1): gulpfile.esm.js
+ * StartIt (v1.2.0): gulpfile.esm.js
  * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */
