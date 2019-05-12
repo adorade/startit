@@ -4,6 +4,7 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/adorade/startit/issues)
 [![Travis (.org) branch](https://img.shields.io/travis/adorade/startit/master.svg?logo=travis&style=flat-square)](https://travis-ci.org/adorade/startit)
 [![Greenkeeper badge](https://badges.greenkeeper.io/adorade/startit.svg?style=flat-square)](https://greenkeeper.io/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg?style=flat-square)](https://conventionalcommits.org)
 
 # StartIt
 
