@@ -103,7 +103,6 @@ function main(args) {
     '.js',
     '.es6',
     '.json',
-    '.md',
     '.scss',
     '.txt',
     '.yml',
