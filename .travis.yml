@@ -9,6 +9,13 @@
 
 language: node_js
 
+# Blocklist branches that you don't want to be built
+branches:
+  except:
+    # prevent tagged commits from being built
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+
+# Build matrix
 matrix:
   fast_finish: true
   include:
