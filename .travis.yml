@@ -12,6 +12,7 @@ language: node_js
 # Blocklist branches that you don't want to be built
 branches:
   except:
+    - experimental
     # prevent tagged commits from being built
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 
