@@ -40,4 +40,4 @@ export const del = require('del');
 
 // For fancy log and colors in console
 export const log = require('fancy-log');
-export { green, magenta, bgBlue, bgRed } from 'ansi-colors';
+export { green, magenta, red, bgBlue, bgRed } from 'ansi-colors';
