@@ -8,7 +8,7 @@
 export {
   src, dest, series, parallel, lastRun, watch, tree,
   args, taskTarget, plugins, browserSync, fs, http2,
-  del, log, green, magenta, bgBlue, bgRed
+  del, log, green, magenta, red, bgBlue, bgRed
 } from './plugins';
 
 // Template for banner to add to file headers
