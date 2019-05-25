@@ -50,8 +50,8 @@ standardVers.displayName = 'standard:version';
 
 // Commit changes
 function commitChanges(done) {
-  const newVersion = `v${_getPackageJsonVersion()}`;
   log(`${green('Commit changes...')}`);
+  const newVersion = `v${_getPackageJsonVersion()}`;
 
   src('.')
     .pipe(plugins.git.add())
@@ -74,8 +74,8 @@ pushChanges.displayName = 'push:changes';
 
 // Create new tag
 function createNewTag(done) {
-  const newVersion = `v${_getPackageJsonVersion()}`;
   log(`${green('Creating new tag:')} ${magenta(newVersion)}`);
+  const newVersion = `v${_getPackageJsonVersion()}`;
 
   plugins.git.tag(`${newVersion}`, `Release ${newVersion}`, function(err) {
     if(err) throw (err);
@@ -98,15 +98,30 @@ pushNewTag.displayName = 'push:new:tag';
 // Publish release to GitHub
 function githubRelease(done) {
   log(`${green('Publishing release to')} ${magenta('GitHub')}`);
+  const newVersion = `v${_getPackageJsonVersion()}`;
 
-  // Set in the settings page of your repository, as a secure variable
   const AUTH = {
-    token: '$CONVENTIONAL_GITHUB_RELEASER_TOKEN'
+    // Set in the settings page of your repository, as a secure variable
+    token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN,
+    url: 'https://api.github.com/'
   };
 
-  conventionalGithubReleaser(AUTH, {
+  const config = [{
+    // conventional-changelog options go here
     preset: 'angular'
-  }, done);
+  }, {
+    // context goes here
+  }, {
+    // git-raw-commits options go here
+  }, {
+    // conventional-commits-parser options go here
+  }, {
+    // conventional-changelog-writer options go here
+    title: `Release ${newVersion}`,
+    date: null
+  }];
+
+  conventionalGithubReleaser(AUTH, config, done);
 }
 githubRelease.displayName = 'github:release';
 
