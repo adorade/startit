@@ -103,8 +103,8 @@ pushChanges.displayName = 'push:changes';
 
 // Create new tag
 function createNewTag(done) {
-  log(`${green('Creating new tag:')} ${magenta(newVersion)}`);
   const newVersion = `v${_getPackageJsonVersion()}`;
+  log(`${green('Creating new tag:')} ${magenta(newVersion)}`);
 
   plugins.git.tag(`${newVersion}`, `Release ${newVersion}`, function(err) {
     if (err) return done(err);
