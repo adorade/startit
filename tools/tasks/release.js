@@ -94,7 +94,7 @@ commitChanges.displayName = 'commit:changes';
 function pushChanges(done) {
   log(`${green('Push changes...')}`);
 
-  plugins.git.push('origin', 'experimental', function(err) {
+  plugins.git.push('origin', 'master', function(err) {
     if (err) return done(err);
     done();
   });
@@ -117,7 +117,7 @@ createNewTag.displayName = 'create:new:tag';
 function pushNewTag(done) {
   log(`${green('Pushing new tag to remote')}`);
 
-  plugins.git.push('origin', 'experimental', { args: '--follow-tags' }, function(err) {
+  plugins.git.push('origin', 'master', { args: '--follow-tags' }, function(err) {
     if (err) return done(err);
     done();
   });
