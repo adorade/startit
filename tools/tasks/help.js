@@ -27,6 +27,7 @@ export function help(done) {
   log(green('      build: Build the project'));
   log(green('        dev: Compile and watch for changes'));
   log(green('     deploy: Deploy files to Github Pages'));
+  log(green('    release: Publish release to GitHub'));
   log(green('    default: Default gulp task'));
   log(green('     checks: Check gulp configuration'));
   log(green('       help: Print help message'));
