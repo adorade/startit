@@ -95,7 +95,7 @@ function pushChanges(done) {
   log(`${green('Push changes...')}`);
 
   plugins.git.push('origin', 'experimental', function(err) {
-    if(err) throw (err);
+    if (err) return done(err);
     done();
   });
 }
@@ -107,7 +107,7 @@ function createNewTag(done) {
   const newVersion = `v${_getPackageJsonVersion()}`;
 
   plugins.git.tag(`${newVersion}`, `Release ${newVersion}`, function(err) {
-    if(err) throw (err);
+    if (err) return done(err);
     done();
   });
 }
@@ -118,7 +118,7 @@ function pushNewTag(done) {
   log(`${green('Pushing new tag to remote')}`);
 
   plugins.git.push('origin', 'experimental', { args: '--follow-tags' }, function(err) {
-    if(err) throw (err);
+    if (err) return done(err);
     done();
   });
 }
