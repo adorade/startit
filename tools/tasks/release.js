@@ -8,11 +8,26 @@ import { src, series, plugins, fs, log, green, magenta, red } from '../util';
 
 import standardVersion from 'standard-version';
 import conventionalGithubReleaser from 'conventional-github-releaser';
+import { exec } from 'child_process';
 
 // We parse the json file instead of using `import` because the version number
 // won't be updated until `standardVers` is finished
 function _getPackageJsonVersion() {
   return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+}
+
+// Get current tag
+function _getCurrentTag() {
+  return new Promise((resolve, reject) => {
+    const cmd = 'git describe --abbrev=0 --tags';
+    return exec(cmd, (err, stdout) => {
+      if (err) {
+        return reject(err);
+      }
+      const currTag = stdout.toString().trim();
+      return resolve(currTag);
+    });
+  });
 }
 
 // Wait until the version number is updated by 'standardVers'
@@ -47,6 +62,20 @@ async function standardVers(done) {
   done();
 }
 standardVers.displayName = 'standard:version';
+
+// Change version number references in project's files
+async function changeVersion(done) {
+  log(`${green('Changing version in')} ${magenta('project\'s files')}`);
+
+  const currentTag = await _getCurrentTag().then(data => data).catch();
+  const newVersion = `v${_getPackageJsonVersion()}`;
+
+  exec(`tools/build/change-version.js ${currentTag} ${newVersion}`, (err) => {
+    if (err) return done(err);
+    done();
+  });
+}
+changeVersion.displayName = 'change:version';
 
 // Commit changes
 function commitChanges(done) {
@@ -127,6 +156,7 @@ githubRelease.displayName = 'github:release';
 
 export const release = series(
   standardVers,
+  changeVersion,
   commitChanges,
   pushChanges,
   createNewTag,
