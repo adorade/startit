@@ -23,7 +23,7 @@
     "start": "gulp dev",
     "build": "gulp build --production",
     "deploy": "gulp build --production && gulp deploy",
-    "change-version": "node tools/build/change-version.js",
+    "release": "gulp release",
     "test": "jest"
   },
   "dependencies": {},
