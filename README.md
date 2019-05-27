@@ -10,7 +10,10 @@
 
 ## Description
 
-> ✔ Simple starter project enabling faster delivery of projects and/or automatic deployment of [GitHub Pages](https://pages.github.com/)
+> ✔ Simple starter project enabling faster delivery of projects and/or:
+>
+> * automatic deployment of [GitHub Pages](https://pages.github.com/)
+> * publish release to [GitHub](https://github.com/)
 
 This provides an example project which automates tasks with gulp including:
 
@@ -77,6 +80,7 @@ Task        | Description
 **build**   | Build the project
 **dev**     | Compile and watch for changes
 **deploy**  | Deploy files to Github Pages
+**release** | Publish release to GitHub
 **default** | Default gulp task
 **checks**  | Check gulp configuration
 **help**    | Print help message
@@ -192,6 +196,16 @@ To automatically deploy your project to [GitHub Pages](https://pages.github.com/
 yarn run deploy
 # or
 gulp build --production && gulp deploy
+```
+
+## Publish release to GitHub
+
+To publish release to [GitHub](https://github.com/) use:
+
+```bash
+yarn run release
+# or
+gulp release
 ```
 
 ## LICENSE
