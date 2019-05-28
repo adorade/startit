@@ -135,20 +135,10 @@ function githubRelease(done) {
     url: 'https://api.github.com/'
   };
 
-  const config = [{
-    // conventional-changelog options go here
-    preset: 'angular'
-  }, {
-    // context goes here
-  }, {
-    // git-raw-commits options go here
-  }, {
-    // conventional-commits-parser options go here
-  }, {
-    // conventional-changelog-writer options go here
-    title: `Release ${newVersion}`,
-    date: null
-  }];
+  const config = {
+    preset: 'angular',
+    name: `Release ${newVersion}`
+  };
 
   conventionalGithubReleaser(AUTH, config, done);
 }

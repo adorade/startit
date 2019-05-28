@@ -8,12 +8,12 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * **task:** add `url` to `auth` param of `conventionalGithubReleaser()` ([5e0bad2](https://github.com/adorade/startit/commit/5e0bad2)), closes [#17](https://github.com/adorade/startit/issues/17)
-* **task:** define `newVersion` at createNewTag ([24fe436](https://github.com/adorade/startit/commit/24fe436)), closes [#21](https://github.com/adorade/startit/issues/21)
+* **task:** define `newVersion` at createNewTag ([35b70b1](https://github.com/adorade/startit/commit/35b70b1)), closes [#21](https://github.com/adorade/startit/issues/21)
 
 
 ### Performance Improvements
 
-* **tasks:** add `release to scripts ([4b4868e](https://github.com/adorade/startit/commit/4b4868e))
+* **tasks:** add `release` to scripts ([5860550](https://github.com/adorade/startit/commit/5860550))
 
 
 

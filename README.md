@@ -29,6 +29,7 @@ This provides an example project which automates tasks with gulp including:
 * handling and inlining assets
 * live-reloading files in a browser when source files change
 * deploying to GitHub Pages
+* publish release to GitHub
 
 ## Requirements
 
@@ -113,7 +114,7 @@ The project have a very simple and flexible structure. If the default place for 
 │   ├── tasks -> tasks files for gulp
 │   └── util  -> config and options for project
 ├── package.json -> NodeJS configuration file
-├── gulpfile.babel.js -> Gulp tasks
+├── gulpfile.esm.js -> Gulp tasks
 ├── README.md         -> README
 └── ... config files for packages
 ```
