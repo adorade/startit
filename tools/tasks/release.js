@@ -94,7 +94,7 @@ commitChanges.displayName = 'commit:changes';
 function pushChanges(done) {
   log(`${green('Push changes...')}`);
 
-  plugins.git.push('origin', 'master', function(err) {
+  plugins.git.push('origin', 'master', (err) => {
     if (err) return done(err);
     done();
   });
@@ -106,7 +106,7 @@ function createNewTag(done) {
   const newVersion = `v${_getPackageJsonVersion()}`;
   log(`${green('Creating new tag:')} ${magenta(newVersion)}`);
 
-  plugins.git.tag(`${newVersion}`, `Release ${newVersion}`, function(err) {
+  plugins.git.tag(`${newVersion}`, `Release ${newVersion}`, (err) => {
     if (err) return done(err);
     done();
   });
@@ -117,7 +117,7 @@ createNewTag.displayName = 'create:new:tag';
 function pushNewTag(done) {
   log(`${green('Pushing new tag to remote')}`);
 
-  plugins.git.push('origin', 'master', { args: '--follow-tags' }, function(err) {
+  plugins.git.push('origin', 'master', { args: '--follow-tags' }, (err) => {
     if (err) return done(err);
     done();
   });
