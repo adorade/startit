@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/adorade/startit/compare/v1.2.0...v1.2.1) (2019-05-28)
+
+
+### Bug Fixes
+
+* **task:** add `url` to `auth` param of `conventionalGithubReleaser()` ([7ea4cf0](https://github.com/adorade/startit/commit/7ea4cf0)), closes [#17](https://github.com/adorade/startit/issues/17)
+* **task:** define `newVersion` at createNewTag ([e71833b](https://github.com/adorade/startit/commit/e71833b)), closes [#21](https://github.com/adorade/startit/issues/21)
+
+
+### Performance Improvements
+
+* **tasks:** add `release` to scripts ([3e33354](https://github.com/adorade/startit/commit/3e33354))
+
+
+
 ## [1.2.0](https://github.com/adorade/startit/compare/v1.1.1...v1.2.0) (2019-05-12)
 
 
