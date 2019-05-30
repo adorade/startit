@@ -51,7 +51,7 @@
     "gulp-header": "^2.0.7",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^5.0.3",
+    "gulp-imagemin": "^6.0.0",
     "gulp-inline-source": "^4.0.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-pug": "^4.0.1",
