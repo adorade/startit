@@ -1,3 +1,0 @@
-# https://stylelint.io/user-guide/configuration/#stylelintignore
-**/build/css/*
-**/tmp/css/*
