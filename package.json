@@ -53,7 +53,7 @@
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^6.0.0",
     "gulp-inline-source": "^4.0.0",
-    "gulp-load-plugins": "^1.6.0",
+    "gulp-load-plugins": "^2.0.0",
     "gulp-pug": "^4.0.1",
     "gulp-pug-linter": "^1.1.0",
     "gulp-rename": "^1.4.0",
