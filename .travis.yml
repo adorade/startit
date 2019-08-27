@@ -27,22 +27,11 @@ matrix:
       node_js: "lts/*"
       os: linux
       dist: xenial
-    - name: "Linux Node 12"
-      node_js: "12"
-      os: linux
-      dist: xenial
     - name: "macOs Node lts/*"
       node_js: "lts/*"
       os: osx
-    - name: "macOs Node 12"
-      node_js: "12"
-      os: osx
     - name: "Windows Node lts/*"
       node_js: "lts/*"
-      os: windows
-      env: YARN_GPG=no # starts gpg-agent that never exits
-    - name: "Windows Node 12"
-      node_js: "12"
       os: windows
       env: YARN_GPG=no # starts gpg-agent that never exits
 
@@ -62,7 +51,7 @@ cache:
 
 before_script:
   - yarn global add gulp-cli
-  - node -v && npm -v && yarn -v && git --version && gulp -v
+  - node -v; npm -v; yarn -v; git --version; gulp -v
 
 script:
   - yarn run test
