@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+    branches: [master, develop]
+  schedule:
+  - cron: 0 3 * * 1-5
+
+jobs:
+  build:
+    name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node_version: [10.x, 12.x]
+        exclude:
+        - os: windows-latest
+          node_version: 10.x
+        - os: macOS-latest
+          node_version: 10.x
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Use Node.js ${{ matrix.node_version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node_version }}
+
+    - name: yarn install, verify and build
+      run: |
+        yarn install
+        yarn run test
+        yarn run build
+
+      env:
+        CI: true
