@@ -1,10 +1,11 @@
-[![GitHub package version](https://img.shields.io/github/package-json/v/adorade/startit.svg?color=green&logo=github&style=flat-square)](https://github.com/adorade/startit/blob/master/package.json)
-[![license](https://img.shields.io/github/license/adorade/startit.svg?longCache=true&style=flat-square)](https://mit-license.org)
-[![devDependencies Status](https://img.shields.io/david/dev/adorade/startit.svg?longCache=true&style=flat-square)](https://david-dm.org/adorade/startit?type=dev)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/adorade/startit/issues)
-[![Travis (.org) branch](https://img.shields.io/travis/adorade/startit/master.svg?logo=travis&style=flat-square)](https://travis-ci.org/adorade/startit)
-[![Greenkeeper badge](https://badges.greenkeeper.io/adorade/startit.svg?style=flat-square)](https://greenkeeper.io/)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg?style=flat-square)](https://conventionalcommits.org)
+[![GitHub package version](https://img.shields.io/github/package-json/v/adorade/startit.svg?color=green&logo=github)](https://github.com/adorade/startit/blob/master/package.json)
+[![license](https://img.shields.io/github/license/adorade/startit.svg)](https://mit-license.org)
+[![devDependencies Status](https://img.shields.io/david/dev/adorade/startit.svg)](https://david-dm.org/adorade/startit?type=dev)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/adorade/startit/issues)
+[![Travis (.org) branch](https://img.shields.io/travis/adorade/startit/master.svg?logo=travis)](https://travis-ci.org/adorade/startit)
+[![Greenkeeper badge](https://badges.greenkeeper.io/adorade/startit.svg)](https://greenkeeper.io/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)
+[![GitHub Actions status](https://github.com/actions/setup-node/workflows/Main%20workflow/badge.svg)](https://github.com/adorade/startit/actions)
 
 # StartIt
 
