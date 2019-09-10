@@ -19,10 +19,11 @@
     "url": "git+https://github.com/adorade/startit.git"
   },
   "scripts": {
-    "dev": "gulp dev",
-    "start": "gulp dev",
+    "verify": "node -v && npm -v && yarn -v && git --version && gulp -v",
+    "dev": "gulp",
     "build": "gulp build --production",
     "deploy": "gulp build --production && gulp deploy",
+    "start": "gulp serve:watch",
     "release": "gulp release",
     "test": "jest"
   },

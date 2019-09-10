@@ -20,4 +20,5 @@ export function checks(done) {
   log(green('Banner:\n'), banner());
   done();
 }
+checks.displayName = 'check:settings';
 checks.description = 'Check gulp configuration';
