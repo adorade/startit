@@ -51,8 +51,8 @@ cache:
 
 before_script:
   - yarn global add gulp-cli
-  - node -v; npm -v; yarn -v; git --version; gulp -v
 
 script:
+  - yarn run verify
   - yarn run test
   - yarn run build
