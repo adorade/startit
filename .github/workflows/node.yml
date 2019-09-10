@@ -36,10 +36,11 @@ jobs:
       with:
         node-version: ${{ matrix.node_version }}
 
-    # install dependencies, test and build
+    # install dependencies, verify, test and build
     - name: Clean install dependencies and build
       run: |
         yarn install
+        yarn run verify
         yarn run test
         yarn run build
       shell: bash
