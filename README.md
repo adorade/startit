@@ -5,7 +5,7 @@
 [![Travis (.org) branch](https://img.shields.io/travis/adorade/startit/master.svg?logo=travis)](https://travis-ci.org/adorade/startit)
 [![Greenkeeper badge](https://badges.greenkeeper.io/adorade/startit.svg)](https://greenkeeper.io/)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)
-[![GitHub Actions status](https://github.com/actions/setup-node/workflows/Main%20workflow/badge.svg)](https://github.com/adorade/startit/actions)
+[![GitHub Actions status](https://github.com/adorade/startit/workflows/Node%20CI/badge.svg)](https://github.com/adorade/startit/actions)
 
 # StartIt
 
