@@ -21,7 +21,7 @@ export function image() {
     .pipe(debugInfo({ title: 'Optimize image:' }))
     .pipe($.imagemin([
       $.imagemin.gifsicle(opts.images.gif),
-      $.imagemin.jpegtran(opts.images.jpeg),
+      $.imagemin.mozjpeg(opts.images.jpeg),
       $.imagemin.optipng(opts.images.png),
       $.imagemin.svgo(opts.images.svg)
     ]))
