@@ -7,8 +7,8 @@
 // Load plugins
 export {
   src, dest, series, parallel, lastRun, watch, tree,
-  args, taskTarget, plugins, browserSync, fs, http2,
-  del, log, green, magenta, red, bgBlue, bgRed
+  args, taskTarget, $, bs, fs,
+  bgBlue, bgRed, blue, green, magenta, red
 } from './plugins';
 
 // Template for banner to add to file headers
@@ -18,7 +18,7 @@ export { banner } from './banner';
 export { dirs, paths } from './config';
 
 // Options
-export { options as opts } from './options';
+export { opts } from './options';
 
 // Util
 export { getJsonData, watchEvent, debugInfo } from './util';

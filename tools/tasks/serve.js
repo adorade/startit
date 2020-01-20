@@ -8,16 +8,16 @@ import {
   lintScss, lintJs, lintPug, compile, transpile, fonts, image, convert, statics, pug
 } from './';
 import {
-  series, watch, args, taskTarget, browserSync,
-  log, magenta, bgBlue, bgRed,
-  paths, opts, watchEvent } from '../util';
+  series, watch, args, taskTarget, $, bs,
+  bgBlue, bgRed, magenta, paths, opts, watchEvent
+} from '../util';
 
 // Automatically reload assets or refresh your browser when changes occur
 // -----------------------------------------------------------------------------
 export function serve(done) {
   if (!args.production) {
     // Serve files from the 'tmp' directory of this project
-    browserSync.init({
+    bs.init({
       server: {
         baseDir: taskTarget
       },
@@ -69,10 +69,10 @@ export function serve(done) {
     ];
 
     for (let watcher of watchers) {
-      log(bgRed(`Watching ${watcher.name}`));
+      $.log(bgRed(`Watching ${watcher.name}`));
 
       for (let p of [ watcher.paths ]) {
-        log(`${bgBlue('Source:')} ${magenta(p)}`);
+        $.log(`${bgBlue('Source:')} ${magenta(p)}`);
       }
 
       let taskNames = [];

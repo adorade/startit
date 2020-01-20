@@ -4,26 +4,26 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import { series, del, dirs } from '../util';
+import { series, $, dirs } from '../util';
 
 // Clean output folder at the start of every run
-// ----------------------------
+// -----------------------------------------------------------------------------
 
 // Clean development output folder
 export function cleanDev() {
-  return del(dirs.dev);
+  return $.del(dirs.dev);
 }
 cleanDev.displayName = 'clean:dev';
 
 // Clean production output folder
 export function cleanProd() {
-  return del(dirs.prod);
+  return $.del(dirs.prod);
 }
 cleanProd.displayName = 'clean:prod';
 
 // Clean logs output folder
 export function cleanLogs() {
-  return del(dirs.logs);
+  return $.del(dirs.logs);
 }
 cleanLogs.displayName = 'clean:logs';
 

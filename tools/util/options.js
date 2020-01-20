@@ -4,13 +4,13 @@
  * Licensed under MIT
  * ========================================================================== */
 
-const { paths } = require('./config');
+import { paths } from './config';
 
 const dates = new Date(
   process.env.SOURCE_DATE_EPOCH ? process.env.SOURCE_DATE_EPOCH * 1000 : new Date().getTime()
 ).toDateString();
 
-export const options = {
+export const opts = {
   entry: {
     cssExternal: 'style**.{scss,sass}',
     cssInline: 'inline**.{scss,sass}',

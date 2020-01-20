@@ -6,11 +6,11 @@
 
 import { lintJs } from './lint';
 import {
-  src, dest, series, lastRun, args, plugins, browserSync,
-  paths, opts, banner, debugInfo } from '../util';
+  src, dest, series, lastRun, args, $, bs, paths, opts, banner, debugInfo
+} from '../util';
 
 // Transpiling ES6 to cross-browser-compatible ES5 code
-// ----------------------------
+// -----------------------------------------------------------------------------
 const taskTarget = args.production ? paths.scripts.prod : paths.scripts.dev;
 
 export function transpile() {
@@ -20,12 +20,12 @@ export function transpile() {
     since: lastRun(transpile)
   })
     .pipe(debugInfo({ title: 'Transpile:' }))
-    .pipe(plugins.babel(opts.babel))
-    .pipe(plugins.if(args.production, plugins.uglify(opts.uglify)))
-    .pipe(plugins.if(args.production, plugins.rename({ extname: '.min.js' })))
-    .pipe(plugins.if(!args.production, plugins.header(banner())))
+    .pipe($.babel(opts.babel))
+    .pipe($.if(args.production, $.uglify(opts.uglify)))
+    .pipe($.if(args.production, $.rename({ extname: '.min.js' })))
+    .pipe($.if(!args.production, $.header(banner())))
     .pipe(dest(taskTarget, { sourcemaps: './' }))
-    .pipe(browserSync.stream({ match: '**/*.js' }));
+    .pipe(bs.stream({ match: '**/*.js' }));
 }
 transpile.displayName = 'transpile';
 
