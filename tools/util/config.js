@@ -46,7 +46,7 @@ export const paths = {
     prod: `${dirs.prod}/static/`
   },
   views: {
-    src: [ `${dirs.src}/views/**/*.pug`, `!./${dirs.src}/views/**/_*.pug` ],
+    src: [ `${dirs.src}/views/**/*.pug`, '!**/_*.pug' ],
     all: `${dirs.src}/views/**/*.pug`,
     dev: `${dirs.dev}/`,
     prod: `${dirs.prod}/`,

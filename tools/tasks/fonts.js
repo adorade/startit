@@ -4,12 +4,10 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import {
-  src, dest, lastRun, args, browserSync,
-  paths, debugInfo } from '../util';
+import { src, dest, lastRun, args, bs, paths, debugInfo } from '../util';
 
 // Copy font files
-// ----------------------------
+// -----------------------------------------------------------------------------
 const taskTarget = args.production ? paths.fonts.prod : paths.fonts.dev;
 
 export function fonts() {
@@ -19,6 +17,6 @@ export function fonts() {
   })
     .pipe(debugInfo({ title: 'Copy fonts:' }))
     .pipe(dest(taskTarget))
-    .pipe(browserSync.stream({ match: '**/*.{otf,eot,svg,ttf,woff,woff2}' }));
+    .pipe(bs.stream({ match: '**/*.{otf,eot,svg,ttf,woff,woff2}' }));
 }
 fonts.displayName = 'fonts';

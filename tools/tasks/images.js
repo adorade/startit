@@ -5,11 +5,11 @@
  * ========================================================================== */
 
 import {
-  src, dest, lastRun, series, args, plugins, browserSync,
-  paths, opts, debugInfo } from '../util';
+  src, dest, lastRun, series, args, $, bs, paths, opts, debugInfo
+} from '../util';
 
 // Compressing new and modified images
-// ----------------------------
+// -----------------------------------------------------------------------------
 const taskTarget = args.production ? paths.images.prod : paths.images.dev;
 
 // Optimize images
@@ -19,14 +19,14 @@ export function image() {
     since: lastRun(image)
   })
     .pipe(debugInfo({ title: 'Optimize image:' }))
-    .pipe(plugins.imagemin([
-      plugins.imagemin.gifsicle(opts.images.gif),
-      plugins.imagemin.jpegtran(opts.images.jpeg),
-      plugins.imagemin.optipng(opts.images.png),
-      plugins.imagemin.svgo(opts.images.svg)
+    .pipe($.imagemin([
+      $.imagemin.gifsicle(opts.images.gif),
+      $.imagemin.mozjpeg(opts.images.jpeg),
+      $.imagemin.optipng(opts.images.png),
+      $.imagemin.svgo(opts.images.svg)
     ]))
     .pipe(dest(taskTarget))
-    .pipe(browserSync.stream({ match: '**/*.{jpg,jpeg,gif,svg,png}' }));
+    .pipe(bs.stream({ match: '**/*.{jpg,jpeg,gif,svg,png}' }));
 }
 image.displayName = 'image';
 
@@ -37,9 +37,9 @@ export function convert() {
     since: lastRun(convert)
   })
     .pipe(debugInfo({ title: 'Converted image:' }))
-    .pipe(plugins.webp(opts.images.webp))
+    .pipe($.webp(opts.images.webp))
     .pipe(dest(taskTarget))
-    .pipe(browserSync.stream({ match: '**/*.{jpg,jpeg,png,webp}' }));
+    .pipe(bs.stream({ match: '**/*.{jpg,jpeg,png,webp}' }));
 }
 convert.displayName = 'convert';
 

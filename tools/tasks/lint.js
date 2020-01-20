@@ -4,10 +4,10 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import { src, series, lastRun, plugins, fs, paths, opts, debugInfo } from '../util';
+import { src, series, lastRun, $, fs, paths, opts, debugInfo } from '../util';
 
 // Code linting and validation
-// ----------------------------
+// -----------------------------------------------------------------------------
 
 // lint *.scss sources files
 export function lintScss() {
@@ -16,7 +16,7 @@ export function lintScss() {
     since: lastRun(lintScss)
   })
     .pipe(debugInfo({ title: 'Lint style:' }))
-    .pipe(plugins.stylelint(opts.styles));
+    .pipe($.gStylelint(opts.styles));
 }
 lintScss.displayName = 'lint:scss';
 
@@ -31,9 +31,9 @@ export function lintJs() {
     since: lastRun(lintJs)
   })
     .pipe(debugInfo({ title: 'Lint script:' }))
-    .pipe(plugins.eslint())
-    .pipe(plugins.eslint.format('stylish', output))
-    .pipe(plugins.eslint.failAfterError());
+    .pipe($.gEslint())
+    .pipe($.gEslint.format('stylish', output))
+    .pipe($.gEslint.failAfterError());
 }
 lintJs.displayName = 'lint:js';
 
@@ -44,8 +44,8 @@ export function lintPug() {
     since: lastRun('lint:pug')
   })
     .pipe(debugInfo({ title: 'Lint pug:' }))
-    .pipe(plugins.pugLinter({ reporter: 'default' }))
-    .pipe(plugins.pugLinter({ failAfterError: true }));
+    .pipe($.pugLinter({ reporter: 'default' }))
+    .pipe($.pugLinter({ failAfterError: true }));
 }
 lintPug.displayName = 'lint:pug';
 

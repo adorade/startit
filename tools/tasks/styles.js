@@ -6,11 +6,11 @@
 
 import { lintScss } from './lint';
 import {
-  src, dest, series, args, plugins, browserSync,
-  paths, opts, banner, debugInfo } from '../util';
+  src, dest, series, args, $, bs, paths, opts, banner, debugInfo
+} from '../util';
 
 // Compiling Sass to CSS code
-// ----------------------------
+// -----------------------------------------------------------------------------
 const entry = opts.entry;
 const cssPath = [];
 
@@ -35,14 +35,14 @@ export function compile() {
     // since: gulp.lastRun(style)
   })
     .pipe(debugInfo({ title: 'Compile:' }))
-    .pipe(plugins.sass(opts.sass)).on('error', plugins.sass.logError)
-    .pipe(plugins.cached('sass_compile'))
-    .pipe(plugins.autoprefixer(opts.autoprefixer))
-    .pipe(plugins.if(args.production, plugins.csso(opts.csso)))
-    .pipe(plugins.if(args.production, plugins.rename({ extname: '.min.css' })))
-    .pipe(plugins.if(!args.production, plugins.header(banner())))
+    .pipe($.sass(opts.sass)).on('error', $.sass.logError)
+    .pipe($.cached('sass_compile'))
+    .pipe($.autoprefixer(opts.autoprefixer))
+    .pipe($.if(args.production, $.csso(opts.csso)))
+    .pipe($.if(args.production, $.rename({ extname: '.min.css' })))
+    .pipe($.if(!args.production, $.header(banner())))
     .pipe(dest(taskTarget, { sourcemaps: './' }))
-    .pipe(browserSync.stream({ match: '**/*.css' }));
+    .pipe(bs.stream({ match: '**/*.css' }));
 }
 compile.displayName = 'compile';
 

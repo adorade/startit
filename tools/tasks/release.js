@@ -4,7 +4,7 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import { src, series, plugins, fs, log, green, magenta, red } from '../util';
+import { src, series, $, fs, green, magenta, red } from '../util';
 
 import standardVersion from 'standard-version';
 import conventionalGithubReleaser from 'conventional-github-releaser';
@@ -51,10 +51,10 @@ async function standardVers(done) {
     silent: true
   }).then(() => {
     // standard-version is done
-    log(`${green('Bumping version in')} ${magenta('package.json')}`);
-    log(`${green('Outputting changes to')} ${magenta('CHANGELOG.md')}`);
+    $.log(`${green('Bumping version in')} ${magenta('package.json')}`);
+    $.log(`${green('Outputting changes to')} ${magenta('CHANGELOG.md')}`);
   }).catch(err => {
-    log.error(`standard-version failed with message: ${red(err.message)}`);
+    $.log.error(`standard-version failed with message: ${red(err.message)}`);
   });
 
   await _fakeTimeOut();
@@ -65,7 +65,7 @@ standardVers.displayName = 'standard:version';
 
 // Change version number references in project's files
 async function changeVersion(done) {
-  log(`${green('Changing version in')} ${magenta('project\'s files')}`);
+  $.log(`${green('Changing version in')} ${magenta('project\'s files')}`);
 
   const currentTag = await _getCurrentTag().then(data => data).catch();
   const newVersion = `v${_getPackageJsonVersion()}`;
@@ -79,12 +79,12 @@ changeVersion.displayName = 'change:version';
 
 // Commit changes
 function commitChanges(done) {
-  log(`${green('Commit changes...')}`);
+  $.log(`${green('Commit changes...')}`);
   const newVersion = `v${_getPackageJsonVersion()}`;
 
   src('.')
-    .pipe(plugins.git.add())
-    .pipe(plugins.git.commit(`chore(release): ${newVersion}`));
+    .pipe($.git.add())
+    .pipe($.git.commit(`chore(release): ${newVersion}`));
 
   done();
 }
@@ -92,9 +92,9 @@ commitChanges.displayName = 'commit:changes';
 
 // Push changes
 function pushChanges(done) {
-  log(`${green('Push changes...')}`);
+  $.log(`${green('Push changes...')}`);
 
-  plugins.git.push('origin', 'master', (err) => {
+  $.git.push('origin', 'master', (err) => {
     if (err) return done(err);
     done();
   });
@@ -104,9 +104,9 @@ pushChanges.displayName = 'push:changes';
 // Create new tag
 function createNewTag(done) {
   const newVersion = `v${_getPackageJsonVersion()}`;
-  log(`${green('Creating new tag:')} ${magenta(newVersion)}`);
+  $.log(`${green('Creating new tag:')} ${magenta(newVersion)}`);
 
-  plugins.git.tag(`${newVersion}`, `Release ${newVersion}`, (err) => {
+  $.git.tag(`${newVersion}`, `Release ${newVersion}`, (err) => {
     if (err) return done(err);
     done();
   });
@@ -115,9 +115,9 @@ createNewTag.displayName = 'create:new:tag';
 
 // Push new tag
 function pushNewTag(done) {
-  log(`${green('Pushing new tag to remote')}`);
+  $.log(`${green('Pushing new tag to remote')}`);
 
-  plugins.git.push('origin', 'master', { args: '--follow-tags' }, (err) => {
+  $.git.push('origin', 'master', { args: '--follow-tags' }, (err) => {
     if (err) return done(err);
     done();
   });
@@ -126,7 +126,7 @@ pushNewTag.displayName = 'push:new:tag';
 
 // Publish release to GitHub
 function githubRelease(done) {
-  log(`${green('Publishing release to')} ${magenta('GitHub')}`);
+  $.log(`${green('Publishing release to')} ${magenta('GitHub')}`);
   const newVersion = `v${_getPackageJsonVersion()}`;
 
   const AUTH = {

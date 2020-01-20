@@ -4,18 +4,18 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import { src, series, plugins, del, dirs, paths, opts, debugInfo } from '../util';
+import { src, series, $, dirs, paths, opts, debugInfo } from '../util';
 
 // Clean GitHub pages output folder
 function cleanGhPages() {
-  return del(dirs.ghpages);
+  return $.del(dirs.ghpages);
 }
 
 // Publish files
 function publish() {
   return src(paths.deploy.src)
     .pipe(debugInfo({ title: 'GitHub Pages:' }))
-    .pipe(plugins.ghPages(opts.deploy));
+    .pipe($.ghPages(opts.deploy));
 }
 
 // Deploy files to Github Pages

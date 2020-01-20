@@ -4,10 +4,9 @@
  * Licensed under MIT
  * ========================================================================== */
 
-import fs from 'fs';
+import { fs, blue, green, magenta, red  } from './';
 import foldero from 'foldero';
 import log from 'fancy-log';
-import { blue, green, magenta, red  } from 'ansi-colors';
 import through from 'through2';
 
 export const getJsonData = obj => {
@@ -67,7 +66,7 @@ export const debugInfo = options => {
       const short = green(file.relative);
       const output = options.minimal ? short : full;
 
-      log( blue(`[ ${options.title} ]`), output );
+      log(blue(`[ ${options.title} ]`), output);
     }
     cb(null, file);
   });
