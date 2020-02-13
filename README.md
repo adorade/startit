@@ -3,7 +3,7 @@
 [![devDependencies Status](https://img.shields.io/david/dev/adorade/startit.svg)](https://david-dm.org/adorade/startit?type=dev)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/adorade/startit/issues)
 [![Travis (.com)](https://img.shields.io/travis/com/adorade/startit?logo=travis)](https://travis-ci.com/adorade/startit)
-[![Greenkeeper badge](https://badges.greenkeeper.io/adorade/startit.svg)](https://greenkeeper.io/)
+[![renovate badge](https://badges.renovateapi.com/github/adorade/startit)](https://renovateapp.com)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)
 [![GitHub Actions status](https://github.com/adorade/startit/workflows/Node%20CI/badge.svg)](https://github.com/adorade/startit/actions)
 
