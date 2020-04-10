@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "config:base",
+    ":maintainLockFilesWeekly",
+    "schedule:nonOfficeHours",
+    ":assignee(adorade)"
+  ],
+  "timezone": "Europe/Bucharest",
+  "packageRules": [
+    {
+      "packagePatterns": ["eslint", "stylelint^"],
+      "groupName": "linters"
+    }
+  ]
+}
