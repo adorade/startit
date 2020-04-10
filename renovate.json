@@ -2,7 +2,8 @@
   "extends": [
     "config:base",
     ":maintainLockFilesWeekly",
-    "schedule:nonOfficeHours"
+    "schedule:nonOfficeHours",
+    ":assignee(adorade)"
   ],
   "timezone": "Europe/Bucharest",
   "packageRules": [
