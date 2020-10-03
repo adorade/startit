@@ -25,7 +25,8 @@ export const $ = require('gulp-load-plugins')({
     'gulp-eslint': 'gEslint',
     'gulp-gh-pages': 'ghPages',
     'gulp-inline-source': 'inlineSource',
-    'gulp-pug-linter': 'pugLinter'
+    'gulp-pug-linter': 'pugLinter',
+    'gulp-terser-js': 'gTerser'
   }
 });
 

@@ -21,7 +21,7 @@ export function transpile() {
   })
     .pipe(debugInfo({ title: 'Transpile:' }))
     .pipe($.babel(opts.babel))
-    .pipe($.if(args.production, $.uglify(opts.uglify)))
+    .pipe($.if(args.production, $.gTerser(opts.terser)))
     .pipe($.if(args.production, $.rename({ extname: '.min.js' })))
     .pipe($.if(!args.production, $.header(banner())))
     .pipe(dest(taskTarget, { sourcemaps: './' }))
