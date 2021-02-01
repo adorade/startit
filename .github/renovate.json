@@ -1,7 +1,6 @@
 {
   "extends": [
     "config:base",
-    ":maintainLockFilesWeekly",
     "schedule:monthly",
     ":assignAndReview(adorade)"
   ],
@@ -9,24 +8,30 @@
   "labels": ["deps"],
   "packageRules": [
     {
-      "packagePatterns": ["^@babel/"],
+      "matchPackagePatterns": ["^@babel/"],
       "groupName": "babel packages",
       "labels": ["build"]
     },
     {
-      "packagePatterns": ["^eslint|eslint$"],
+      "matchPackagePatterns": ["^eslint|eslint$"],
       "groupName": "eslint packages",
       "labels": ["lint"]
     },
     {
-      "packagePatterns": ["^stylelint|stylelint$"],
+      "matchPackagePatterns": ["^stylelint|stylelint$"],
       "groupName": "stylelint packages",
       "labels": ["lint"]
     },
     {
-      "packagePatterns": ["^gulp"],
+      "matchPackagePatterns": ["^gulp"],
       "groupName": "gulp packages",
       "labels": ["gulp"]
     }
-  ]
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "extends": [
+      "schedule:monthly"
+    ]
+  }
 }

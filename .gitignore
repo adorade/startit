@@ -6,7 +6,7 @@ dist
 .publish
 
 # To do Tasks
-.TODO
+.todo
 
 # Logs and coverage
 coverage
@@ -17,6 +17,7 @@ logs
 
 # Files to ignore
 npm-debug.log*
+.env
 
 # Numerous always-ignore extensions
 *.diff
