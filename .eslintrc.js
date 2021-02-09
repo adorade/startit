@@ -1,5 +1,12 @@
+/*!
+ * StartIt (v1.2.1): .eslintrc.js
+ * Copyright (c) 2017-21 Adorade (https://adorade.ro)
+ * Licensed under MIT
+ * ========================================================================== */
+// https://eslint.org/docs/user-guide/configuring
+
 module.exports = {
-  parser: "babel-eslint",
+  parser: "@babel/eslint-parser",
   env: {
     browser: true,
     es6: true,

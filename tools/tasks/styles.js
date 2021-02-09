@@ -1,6 +1,6 @@
 /*!
  * StartIt (v1.2.1): tools/tasks/styles.js
- * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
+ * Copyright (c) 2017-21 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */
 

@@ -1,6 +1,6 @@
 /*!
- * Startit (v1.2.1): .babelrc.js
- * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
+ * StartIt (v1.2.1): .babelrc.js
+ * Copyright (c) 2017-21 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */
 
