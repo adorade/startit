@@ -1,6 +1,6 @@
 /*!
- * Startit (v1.2.1): jest.config.js
- * Copyright (c) 2017 - 2019 Adorade (https://adorade.ro)
+ * StartIt (v1.2.1): jest.config.js
+ * Copyright (c) 2017-21 Adorade (https://adorade.ro)
  * Licensed under MIT
  * ========================================================================== */
 // For a detailed explanation regarding each configuration property, visit:
