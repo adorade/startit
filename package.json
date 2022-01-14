@@ -65,7 +65,7 @@
     "jest": "27.4.3",
     "jstransformer-markdown-it": "2.1.0",
     "minimist": "1.2.5",
-    "shelljs": "0.8.4",
+    "shelljs": "0.8.5",
     "standard-version": "9.3.2",
     "stylelint": "13.13.1",
     "stylelint-config-standard": "21.0.0",
