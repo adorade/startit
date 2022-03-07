@@ -62,7 +62,7 @@
     "gulp-stylelint": "13.0.0",
     "gulp-terser-js": "5.2.2",
     "gulp-webp": "4.0.1",
-    "jest": "27.4.3",
+    "jest": "27.5.1",
     "jstransformer-markdown-it": "2.1.0",
     "minimist": "1.2.5",
     "shelljs": "0.8.4",
